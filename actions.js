@@ -18,9 +18,10 @@ const budget = {
 
 }
 
+// const typeSelectionEl = document.getElementById("selectType")
+const expenseTypeEl = document.getElementById("expense-type")
 const totalSumEl = document.getElementById("total-sum")
 const totalExpenseEl = document.getElementById("expense-amt")
-const inputTypeEl = document.getElementById("input-type")
 const inputAmountEl = document.getElementById("input-amount")
 const addExpenseBtnEl = document.getElementById("add-expense")
 const expensesListEl = document.getElementById("expenses")
@@ -29,7 +30,7 @@ const expensesListEl = document.getElementById("expenses")
 
 addExpenseBtnEl.addEventListener("click", function() {
     budget.expense.push(inputAmountEl.value)
-    budget.expenseTypes.push(inputTypeEl.value)
+    budget.expenseTypes.push(expenseTypeEl.value)
 
     renderBudget()
     clearField()
@@ -62,21 +63,21 @@ function clearField() {
 
     function renderBudget(){
         let listItems = ""
-        budget.sum = 0
         for (let i = 0; i < budget.expense.length; i++) {
             listItems += 
-            `<li>${budget.expenseTypes[i]} - $${budget.expense[i]} </li>`
-            // renderSum()
+            `<li> ${budget.expenseTypes[i]} - $${budget.expense[i]} </li>`
             // addExpense()
         }
-        
         expensesListEl.innerHTML = `${listItems}`
-        totalSumEl.innerHTML = `50`
+        renderSum()
         totalExpenseEl.innerHTML = `50`
     }
 
     function renderSum() {
-        budget.sum = budget.expense[0].value + budget.expense[1].value
+        let sum = 0
+        sum += budget.expense[i]
+        budget.sum = sum
+        totalSumEl.innerHTML = budget.sum
     }
 
 
@@ -89,3 +90,16 @@ function clearField() {
  
     }
     
+
+
+for(var i = 0; i < budget.expenseTypes.length; i++) {
+    var opt = budget.expenseTypes[i]
+    var el = document.createElement("option");
+    el.textContent = opt
+    typeSelectionEl.value = opt
+    typeSelectionEl.appendChild(el)
+}
+
+
+
+
