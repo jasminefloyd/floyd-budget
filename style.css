@@ -6,13 +6,17 @@ html, body {
 }
 
 .outer-container {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     max-width: 320px;
+    max-height: fit-content;
     margin: 30px auto;
     padding: 50px;
     border: 4px black solid;
     border-radius: 6px;
+    /* height: 550px; */
+    width: 350px;
+    
 }
 
 .inner-container {
