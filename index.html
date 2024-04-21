@@ -1,0 +1,48 @@
+<!-- Create a skeleton for the budget app  
+
+    Needs to take a number value from the input field
+    add that value to the sum
+    subtract the sum of expense from the revenue to get the remaining cash
+    display the expenses in a list
+    display the revenue in a list
+    show the total budget
+    total expenses
+    remaining cash
+
+
+-->
+<!DOCTYPE html>
+ <html>
+        <head>
+            <title>FDS Budget App</title>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" />
+            <link rel="stylesheet" href="style.css">
+        </head>
+        <body>
+            <div class="outer-container">
+                <div class="inner-container">
+                    <img src="./assets/icon.png">
+                    <input type="text" id="input-type" placeholder="Add Expense" />
+                    <input type="number" id="input-amount" placeholder="$200" />
+                    <button id="add-expense">Add Expense</button>
+                </div>
+            
+                <div id="expenseReport">
+                    <p id="expenseHeader">Expense Report:</p>
+                    <p id="total-sum">0</p>
+                    <p id="expense-amt">0</p>
+                    <ul id="expenses"></ul>
+                    <ul id="revenue"></ul>
+                    
+                </div>
+
+                <div>     
+                    <p id="fds-tag">🏆 Greatness Magnified - An FDS Lifestyle </p>
+                </div>
+            </div>
+            <script src="actions.js" type="module"></script>
+        </body>
+    </html>
