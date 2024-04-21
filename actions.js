@@ -31,54 +31,42 @@ const expensesListEl = document.getElementById("expenses")
 addExpenseBtnEl.addEventListener("click", function() {
     budget.expense.push(inputAmountEl.value)
     budget.expenseTypes.push(expenseTypeEl.value)
-
     renderBudget()
+    calculateSum()
+    calculateExpense()
     clearField()
     
     // push(budgetListInDB, inputTypeValue, inputTypeAmount)
     
 })
 
+function renderBudget(){
+    let listItems = ""
+    for (let i = 0; i < budget.expense.length; i++) {
+        listItems += 
+        `<li> ${budget.expenseTypes[i]} - $${budget.expense[i]} </li>`
+        // addExpense()
+    }
 
+    expensesListEl.innerHTML = `${listItems}`
 
+}
 
+function calculateSum() {
+    budget.sum = inputAmountEl.value
+    totalSumEl.innerHTML = `${budget.sum}`
+}
+
+function calculateExpense() {
+    totalExpenseEl.innerHTML = `50`
+}
 
     
 function clearField() {
-        document.getElementById("input-type").value = " "
+        document.getElementById("expense-type").value = " "
         document.getElementById("input-amount").value = "$0"
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-    function renderBudget(){
-        let listItems = ""
-        for (let i = 0; i < budget.expense.length; i++) {
-            listItems += 
-            `<li> ${budget.expenseTypes[i]} - $${budget.expense[i]} </li>`
-            // addExpense()
-        }
-        expensesListEl.innerHTML = `${listItems}`
-        renderSum()
-        totalExpenseEl.innerHTML = `50`
-    }
-
-    function renderSum() {
-        let sum = 0
-        sum += budget.expense[i]
-        budget.sum = sum
-        totalSumEl.innerHTML = budget.sum
-    }
 
 
 
@@ -92,13 +80,13 @@ function clearField() {
     
 
 
-for(var i = 0; i < budget.expenseTypes.length; i++) {
-    var opt = budget.expenseTypes[i]
-    var el = document.createElement("option");
-    el.textContent = opt
-    typeSelectionEl.value = opt
-    typeSelectionEl.appendChild(el)
-}
+// for(var i = 0; i < budget.expenseTypes.length; i++) {
+//     var opt = budget.expenseTypes[i]
+//     var el = document.createElement("option");
+//     el.textContent = opt
+//     typeSelectionEl.value = opt
+//     typeSelectionEl.appendChild(el)
+// }
 
 
 
