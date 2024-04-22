@@ -48,19 +48,6 @@ function renderBudget(){
         listItems += 
         `<li> ${budget.expenseTypes[i]} - $${budget.expense[i]} </li>`
         // addExpense()
-        // calculateSum()
-    }
-    
-    expensesListEl.innerHTML = `${listItems}`
-
-}
-
-function addExpenseFlow(){
-    let listItems = ""
-    for (let i = 0; i < budget.expense.length; i++) {
-        listItems += 
-        `<li> ${budget.expenseTypes[i]} - $${budget.expense[i]} </li>`
-        // addExpense()
         calculateSum()
     }
     
@@ -68,13 +55,26 @@ function addExpenseFlow(){
 
 }
 
+// function addExpenseFlow(){
+//     let listItems = ""
+//     for (let i = 0; i < budget.expense.length; i++) {
+//         listItems += 
+//         `<li> ${budget.expenseTypes[i]} - $${budget.expense[i]} </li>`
+//         // addExpense()
+//         calculateSum()
+//     }
+    
+//     expensesListEl.innerHTML = `${listItems}`
+
+// }
+
 
 function calculateSum() {
     // for (let i = 0; i < budget.expense.length; i++) {
     //     budget.sum += budget.expense[i + 1]
     //     totalSumEl.innerHTML = budget.sum
     // }
-    totalSumEl.innerHTML = `100`
+    totalSumEl.innerHTML = `$100`
    
 }
 
