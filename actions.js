@@ -10,7 +10,7 @@ import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.15.
 // const budgetListInDB = ref(database, "budgetList")
 const budget = {
     name: " ",
-    salary: [],
+    salary: 1000,
     expense: [],
     expenseTypes: [],
     sum: 0,
@@ -20,25 +20,27 @@ const budget = {
 
 // const typeSelectionEl = document.getElementById("selectType")
 const expenseTypeEl = document.getElementById("expense-type")
-const totalSumEl = document.getElementById("total-sum")
-const totalExpenseEl = document.getElementById("expense-amt")
 const inputAmountEl = document.getElementById("input-amount")
+
 const addExpenseBtnEl = document.getElementById("add-expense")
 const expensesListEl = document.getElementById("expenses")
+const salaryListEl = document.getElementById("salary")
+const totalSumEl = document.getElementById("total-sum")
+const totalExpenseEl = document.getElementById("expense-amt")
 
 
 
 addExpenseBtnEl.addEventListener("click", function() {
+    
     budget.expense.push(inputAmountEl.value)
     budget.expenseTypes.push(expenseTypeEl.value)
     renderBudget()
-    calculateSum()
     calculateExpense()
     clearField()
-    
     // push(budgetListInDB, inputTypeValue, inputTypeAmount)
     
 })
+
 
 function renderBudget(){
     let listItems = ""
@@ -46,19 +48,38 @@ function renderBudget(){
         listItems += 
         `<li> ${budget.expenseTypes[i]} - $${budget.expense[i]} </li>`
         // addExpense()
+        // calculateSum()
     }
-
+    
     expensesListEl.innerHTML = `${listItems}`
 
 }
 
+function addExpenseFlow(){
+    let listItems = ""
+    for (let i = 0; i < budget.expense.length; i++) {
+        listItems += 
+        `<li> ${budget.expenseTypes[i]} - $${budget.expense[i]} </li>`
+        // addExpense()
+        calculateSum()
+    }
+    
+    expensesListEl.innerHTML = `${listItems}`
+
+}
+
+
 function calculateSum() {
-    budget.sum = inputAmountEl.value
-    totalSumEl.innerHTML = `${budget.sum}`
+    // for (let i = 0; i < budget.expense.length; i++) {
+    //     budget.sum += budget.expense[i + 1]
+    //     totalSumEl.innerHTML = budget.sum
+    // }
+    totalSumEl.innerHTML = `100`
+   
 }
 
 function calculateExpense() {
-    totalExpenseEl.innerHTML = `50`
+    totalExpenseEl.innerHTML = "$" + (budget.salary - budget.sum)
 }
 
     
