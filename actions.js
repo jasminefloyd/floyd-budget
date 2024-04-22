@@ -23,6 +23,7 @@ const expenseTypeEl = document.getElementById("expense-type")
 const inputAmountEl = document.getElementById("input-amount")
 
 const addExpenseBtnEl = document.getElementById("add-expense")
+
 const expensesListEl = document.getElementById("expenses")
 const salaryListEl = document.getElementById("salary")
 const totalSumEl = document.getElementById("total-sum")
@@ -31,12 +32,13 @@ const totalExpenseEl = document.getElementById("expense-amt")
 
 
 addExpenseBtnEl.addEventListener("click", function() {
+    const expenseType = expenseTypeEl.value;
+    const expenseAmount = Number(inputAmountEl.value)
     
-    budget.expense.push(inputAmountEl.value)
-    budget.expenseTypes.push(expenseTypeEl.value)
+    budget.expense.push(expenseAmount)
+    budget.expenseTypes.push(expenseType)
     renderBudget()
-    calculateExpense()
-    clearField()
+
     // push(budgetListInDB, inputTypeValue, inputTypeAmount)
     
 })
@@ -48,35 +50,24 @@ function renderBudget(){
         listItems += 
         `<li> ${budget.expenseTypes[i]} - $${budget.expense[i]} </li>`
         // addExpense()
-        calculateSum()
+        // calculateSum()
     }
+
     
     expensesListEl.innerHTML = `${listItems}`
-
+    calculateSum()
+    calculateExpense()
+    clearField()
 }
-
-// function addExpenseFlow(){
-//     let listItems = ""
-//     for (let i = 0; i < budget.expense.length; i++) {
-//         listItems += 
-//         `<li> ${budget.expenseTypes[i]} - $${budget.expense[i]} </li>`
-//         // addExpense()
-//         calculateSum()
-//     }
-    
-//     expensesListEl.innerHTML = `${listItems}`
-
-// }
 
 
 function calculateSum() {
-    // for (let i = 0; i < budget.expense.length; i++) {
-    //     budget.sum += budget.expense[i + 1]
-    //     totalSumEl.innerHTML = budget.sum
-    // }
-    totalSumEl.innerHTML = `$100`
-   
+        const sum = budget.expense.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+        budget.sum = sum
+        totalSumEl.innerHTML = budget.sum
 }
+
+
 
 function calculateExpense() {
     totalExpenseEl.innerHTML = "$" + (budget.salary - budget.sum)
@@ -87,28 +78,3 @@ function clearField() {
         document.getElementById("expense-type").value = " "
         document.getElementById("input-amount").value = "$0"
 }
-
-
-
-
-
-    function addExpense(){
-        budget.expense.push(inputAmountEl.value)
-        budget.expenseTypes.push(inputTypeEl.value)
-        budget.sum += inputAmountEl.value
- 
-    }
-    
-
-
-// for(var i = 0; i < budget.expenseTypes.length; i++) {
-//     var opt = budget.expenseTypes[i]
-//     var el = document.createElement("option");
-//     el.textContent = opt
-//     typeSelectionEl.value = opt
-//     typeSelectionEl.appendChild(el)
-// }
-
-
-
-
