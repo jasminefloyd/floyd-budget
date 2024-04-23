@@ -23,15 +23,42 @@
         </head>
         <body>
             <div class="outer-container">
-                <div class="inner-container">
-                    <img src="./assets/icon.png">
-                    <select id="selectType" class="box">
-                        <option id="droppy" value="" disabled selected>Select Expense</option>
-                    </select>
-                    <!-- <input type="text" id="expense-type" class="box" placeholder="Expense Name" /> -->
-                    <input type="number" id="input-amount" class="box" placeholder="$0" />
-                    <button id="add-expense">Add Expense</button>
+                <img src="./assets/icon.png">
+                <div class="tabs">
+                    <ul class="tab-list">
+                        <li class="tab-link active" data-tab="tab-1">Tab 1</li>
+                        <li class="tab-link" data-tab="tab-2">Tab 2</li>
+                    </ul>
+            
+                    <div id="tab-1" class="tab-content active">
+                        <div class="inner-container" id="expenseSection">
+                            <select id="selectType" class="box">
+                                <option id="droppy" value="" disabled selected>Select Expense</option>
+                            </select>
+                            <!-- <input type="text" id="expense-type" class="box" placeholder="Expense Name" /> -->
+                            <input type="number" id="input-amount" class="box" placeholder="$0" />
+                            <button id="add-expense">Add Expense</button>
+                        </div>
+                    </div>
+                    <div id="tab-2" class="tab-content">
+                        <div class="inner-container" id="expenseSection">
+                            <select id="selectType" class="box">
+                                <option id="droppy" value="" disabled selected>Select Expense</option>
+                            </select>
+                            <!-- <input type="text" id="expense-type" class="box" placeholder="Expense Name" /> -->
+                            <input type="number" id="input-amount" class="box" placeholder="$0" />
+                            <button id="add-expense">Add Expense</button>
+                        </div>
+                    </div>
                 </div>
+                
+
+
+
+
+
+                    
+                
             
                 <div id="expenseReport">
                     <br />

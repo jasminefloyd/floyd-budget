@@ -27,7 +27,7 @@ html, body {
 
 img {
     width: 150px;
-    margin: 0 auto;
+    margin-left: 85px; 
 }
 
 .box {
@@ -101,6 +101,42 @@ button {
     text-align: center;
     font-family: 'Rubik', sans-serif;
 }
+
+.tabs {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tab-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .tab-link {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+    cursor: pointer;
+    background-color: #f0f0f0; 
+  }
+  
+  .tab-link.active {
+    background-color: #fff;
+    border-bottom: 1px solid maroon;
+  }
+  
+  .tab-content {
+    display: none; 
+    padding: 15px;
+    border: 1px solid #ccc;
+  }
+  
+  .tab-content.active {
+    display: block; 
+  }
+
 
 
 #fds-tag {

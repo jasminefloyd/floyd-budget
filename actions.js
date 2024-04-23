@@ -26,6 +26,21 @@ const expensesListEl = document.getElementById("expenses")
 const salaryListEl = document.getElementById("salary")
 const totalSumEl = document.getElementById("total-sum")
 const totalExpenseEl = document.getElementById("expense-amt")
+const tabLinks = document.querySelectorAll(".tab-link")
+const tabContents = document.querySelectorAll(".tab-content")
+
+tabLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      // Deactivate all tabs
+      tabLinks.forEach((link) => link.classList.remove("active"))
+      tabContents.forEach((content) => content.classList.remove("active"))
+  
+      // Activate the clicked tab
+      const tab = event.currentTarget.dataset.tab
+      event.currentTarget.classList.add("active")
+      document.getElementById(tab).classList.add("active")
+    })
+  })
 
 for (let i = 0; i < budget.expenseTypes.length; i++) {
     let option = document.createElement("option")
@@ -75,3 +90,8 @@ function clearField() {
     document.getElementById("input-amount").value = "$0"
 
 }
+
+
+
+
+
