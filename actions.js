@@ -10,18 +10,22 @@ import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.15.
 // const budgetListInDB = ref(database, "budgetList")
 const budget = {
     name: " ",
-    salary: 3000,
+    salary: ["1000", "500"],
     expense: [],
     expenseTypeU: [],
     expenseTypes: ["Rent" , "Transportation", "Food", "Utilities", "Entertainment", "Misc", "Other"],
     sum: 0,
+    salarySum: 0,
     moneyLeft: 0,
 
 }
 
 const typeSelectionEl = document.getElementById("selectType")
+const incomeInputEl = document.getElementById("income-type")
+const incomeAmountEl = document.getElementById("income-input-amount")
 const inputAmountEl = document.getElementById("input-amount")
 const addExpenseBtnEl = document.getElementById("add-expense")
+const addIncomeBtnEl = document.getElementById("add-income")
 const expensesListEl = document.getElementById("expenses")
 const salaryListEl = document.getElementById("salary")
 const totalSumEl = document.getElementById("total-sum")
@@ -50,6 +54,7 @@ for (let i = 0; i < budget.expenseTypes.length; i++) {
   }
 
 // push(budgetListInDB, inputTypeValue, inputTypeAmount)
+
 addExpenseBtnEl.addEventListener("click", function() {
     const expenseType = typeSelectionEl.value
     const expenseAmount = Number(inputAmountEl.value)
@@ -57,7 +62,16 @@ addExpenseBtnEl.addEventListener("click", function() {
     budget.expense.push(expenseAmount)
     budget.expenseTypeU.push(expenseType) 
     renderBudget()
-});
+})
+
+addIncomeBtnEl.addEventListener("click", function() {
+    const incomeAmount = Number(incomeAmountEl.value)
+    budget.salary.push(incomeAmount)
+    calculateExpense()
+})
+
+
+
 
 function renderBudget() {
     let listItems = "" 
@@ -81,7 +95,11 @@ function calculateSum() {
 
 
 function calculateExpense() {
-    totalExpenseEl.innerHTML = "$" + (budget.salary - budget.sum)
+    // const sum = budget.salary.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+    // budget.salarySum = sum
+    totalExpenseEl.innerHTML = `$${budget.salarySum}`
+
+
 }
 
     

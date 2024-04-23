@@ -130,7 +130,8 @@ button {
   .tab-content {
     display: none; 
     padding: 15px;
-    border: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
   }
   
   .tab-content.active {
