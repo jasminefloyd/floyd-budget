@@ -48,7 +48,9 @@ function renderBudget(){
     let listItems = ""
     for (let i = 0; i < budget.expense.length; i++) {
         listItems += 
-        `<li> ${budget.expenseTypes[i]} - $${budget.expense[i]} </li>`
+        `<li> ${budget.expenseTypes[i]} - $${budget.expense[i]} </li>
+        <hr />
+        `
         // addExpense()
         // calculateSum()
     }

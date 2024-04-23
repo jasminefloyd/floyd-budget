@@ -2,7 +2,7 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Rubik', sans-serif;
-    background-color: #EEF0F4;
+    background-color: whitesmoke
 }
 
 .outer-container {
@@ -42,19 +42,43 @@ img {
     margin: 5px;
 }
 
-#total-sum, #expenseHeader, #expense-amt {
+/* #total-sum, #expenseHeader, #expense-amt {
     color: goldenrod;
     margin-top: 10px;
     margin-bottom: 30px;
     font-size: 25px;
     text-align: center;
     font-weight: bold;
+} */
+#expenseHeader {
+    text-align: center;
+    font-size: large;
 }
 
-#total-sum, #expense-amt {
+.totalContainers {
+    color: goldenrod;
+    margin-top: -15px;
+    margin-bottom: 25px;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.calculationContainers{
     display:inline-block;
-    width: 50px;
-    margin-left: 50px;
+    margin-left: 35px;
+}
+
+
+.calculationLabel {
+    width:fit-content;
+    color: goldenrod;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
 
 }
   
@@ -62,14 +86,14 @@ img {
     margin-top: 20px;
     list-style: none;
     padding-left: 0;
-  
   }
   
   li {
     margin-top: 5px;
     font-size: 18px;
-    color: black;
+    color: darkslategray;
     font-family:Verdana, Geneva, Tahoma, sans-serif; 
+    list-style-type: none;
   }
 
 
