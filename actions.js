@@ -10,53 +10,47 @@ import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.15.
 // const budgetListInDB = ref(database, "budgetList")
 const budget = {
     name: " ",
-    salary: 1000,
+    salary: 3000,
     expense: [],
-    expenseTypes: [],
+    expenseTypeU: [],
+    expenseTypes: ["Rent" , "Transportation", "Food", "Utilities", "Entertainment", "Misc", "Other"],
     sum: 0,
     moneyLeft: 0,
 
 }
 
-// const typeSelectionEl = document.getElementById("selectType")
-const expenseTypeEl = document.getElementById("expense-type")
+const typeSelectionEl = document.getElementById("selectType")
 const inputAmountEl = document.getElementById("input-amount")
-
 const addExpenseBtnEl = document.getElementById("add-expense")
-
 const expensesListEl = document.getElementById("expenses")
 const salaryListEl = document.getElementById("salary")
 const totalSumEl = document.getElementById("total-sum")
 const totalExpenseEl = document.getElementById("expense-amt")
 
+for (let i = 0; i < budget.expenseTypes.length; i++) {
+    let option = document.createElement("option")
+    option.value = budget.expenseTypes[i]
+    option.text = budget.expenseTypes[i]
+    typeSelectionEl.appendChild(option)
+  }
 
-
+// push(budgetListInDB, inputTypeValue, inputTypeAmount)
 addExpenseBtnEl.addEventListener("click", function() {
-    const expenseType = expenseTypeEl.value;
+    const expenseType = typeSelectionEl.value
     const expenseAmount = Number(inputAmountEl.value)
-    
+
     budget.expense.push(expenseAmount)
-    budget.expenseTypes.push(expenseType)
+    budget.expenseTypeU.push(expenseType) 
     renderBudget()
+});
 
-    // push(budgetListInDB, inputTypeValue, inputTypeAmount)
-    
-})
-
-
-function renderBudget(){
-    let listItems = ""
+function renderBudget() {
+    let listItems = "" 
     for (let i = 0; i < budget.expense.length; i++) {
-        listItems += 
-        `<li> ${budget.expenseTypes[i]} - $${budget.expense[i]} </li>
-        <hr />
-        `
-        // addExpense()
-        // calculateSum()
+        listItems += `<li>${budget.expenseTypeU[i]} - $${budget.expense[i]}</li><hr />` 
     }
+    expensesListEl.innerHTML = listItems 
 
-    
-    expensesListEl.innerHTML = `${listItems}`
     calculateSum()
     calculateExpense()
     clearField()
@@ -66,7 +60,7 @@ function renderBudget(){
 function calculateSum() {
         const sum = budget.expense.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
         budget.sum = sum
-        totalSumEl.innerHTML = budget.sum
+        totalSumEl.innerHTML = `$${budget.sum}`
 }
 
 
@@ -77,6 +71,7 @@ function calculateExpense() {
 
     
 function clearField() {
-        document.getElementById("expense-type").value = " "
-        document.getElementById("input-amount").value = "$0"
+    document.getElementById("selectType").value = ""
+    document.getElementById("input-amount").value = "$0"
+
 }

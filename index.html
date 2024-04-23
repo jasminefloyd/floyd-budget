@@ -25,22 +25,24 @@
             <div class="outer-container">
                 <div class="inner-container">
                     <img src="./assets/icon.png">
-                    <!-- <select id="selectType" class="box">
-                        <option>Select Expense</option>
-                    </select> -->
-                    <input type="text" id="expense-type" class="box" placeholder="Expense Name" />
-                    <input type="number" id="input-amount" class="box" placeholder="$200" />
+                    <select id="selectType" class="box">
+                        <option id="droppy" value="" disabled selected>Select Expense</option>
+                    </select>
+                    <!-- <input type="text" id="expense-type" class="box" placeholder="Expense Name" /> -->
+                    <input type="number" id="input-amount" class="box" placeholder="$0" />
                     <button id="add-expense">Add Expense</button>
                 </div>
             
                 <div id="expenseReport">
-                    <p id="expenseHeader">Expense Report:</p>
+                    <br />
+                    <hr />
+                    <p id="expenseHeader">Expense Report</p>
                     <div class="calculationContainers">
-                        <p id="" class="calculationLabel">Expense Total:</p>
+                        <p id="" class="calculationLabel">Expense Total</p>
                         <p id="total-sum" class="totalContainers">00</p>
                     </div>
                     <div class="calculationContainers">
-                        <p id="" class="calculationLabel">Remaining Cash:</p>
+                        <p id="" class="calculationLabel">Remaining Cash</p>
                         <p id="expense-amt" class="totalContainers">000</p>
                     </div>
                     <div class="ledger">

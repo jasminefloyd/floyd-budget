@@ -2,7 +2,7 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Rubik', sans-serif;
-    background-color: whitesmoke
+    background-color: whitesmoke;
 }
 
 .outer-container {
@@ -31,7 +31,7 @@ img {
 }
 
 .box {
-    color: #432000;
+    color: slategray;
     background-color: #DCE1EB;
     border: 0;
     padding: 15px;
@@ -42,17 +42,10 @@ img {
     margin: 5px;
 }
 
-/* #total-sum, #expenseHeader, #expense-amt {
-    color: goldenrod;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    font-size: 25px;
-    text-align: center;
-    font-weight: bold;
-} */
 #expenseHeader {
     text-align: center;
-    font-size: large;
+    font-size: 20px;
+    font-weight: bolder;
 }
 
 .totalContainers {
