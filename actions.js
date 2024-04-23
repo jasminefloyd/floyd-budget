@@ -112,7 +112,7 @@ function calculateSum() {
 function calculateExpense() {
     const sum = budget.salary.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
     budget.salarySum = sum
-    totalExpenseEl.innerHTML = `$${budget.salarySum}`
+    totalExpenseEl.innerHTML = `$${budget.salarySum - budget.sum}`
 
 
 }
