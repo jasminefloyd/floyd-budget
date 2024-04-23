@@ -24,6 +24,21 @@
         <body>
             <div class="outer-container">
                 <img src="./assets/icon.png">
+                <div id="expenseReport">
+                    <p id="expenseHeader">Expense Report</p>
+                    <div class="calculationContainers">
+                        <p id="" class="calculationLabel">Expense Total</p>
+                        <p id="total-sum" class="totalContainers">00</p>
+                    </div>
+                    <div class="calculationContainers">
+                        <p id="" class="calculationLabel">Remaining Cash</p>
+                        <p id="expense-amt" class="totalContainers">000</p>
+                    </div>
+                    <!-- <div class="ledger">
+                        <ul id="expenses"></ul>
+                        <ul id="salary"></ul>
+                    </div> -->
+                </div>
                 <div class="tabs">
                     <ul class="tab-list">
                         <li class="tab-link active" data-tab="tab-1">Expenses</li>
@@ -37,6 +52,9 @@
                             </select>
                             <input type="number" id="input-amount" class="box" placeholder="$0" />
                             <button id="add-expense">Add Expense</button>
+                            <div class="ledger">
+                                <ul id="expenses"></ul>
+                            </div>
                         </div>
                     </div>
                     <div id="tab-2" class="tab-content">
@@ -44,11 +62,17 @@
                             <input type="text" id="income-type" class="box" placeholder="Income Name" />
                             <input type="number" id="income-input-amount" class="box" placeholder="$0" />
                             <button id="add-income">Add Income</button>
+                            <div class="ledger">
+                                <ul id="salary"></ul>
+                            </div>
                         </div>
+                    </div>
+                    <div>     
+                        <p id="fds-tag">🏆 Greatness Magnified - An FDS Lifestyle </p>
                     </div>
                 </div>
             
-                <div id="expenseReport">
+                <!-- <div id="expenseReport">
                     <p id="expenseHeader">Expense Report</p>
                     <div class="calculationContainers">
                         <p id="" class="calculationLabel">Expense Total</p>
@@ -58,17 +82,12 @@
                         <p id="" class="calculationLabel">Remaining Cash</p>
                         <p id="expense-amt" class="totalContainers">000</p>
                     </div>
-                    <div class="ledger">
+                     <div class="ledger">
                         <ul id="expenses"></ul>
                         <ul id="salary"></ul>
-                    </div>
-                    
-                </div>
+                    </div> -->
+                  
 
-                <div>     
-                    <p id="fds-tag">🏆 Greatness Magnified - An FDS Lifestyle </p>
-                </div>
-            </div>
             <script src="actions.js" type="module"></script>
         </body>
     </html>

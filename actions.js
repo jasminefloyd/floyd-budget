@@ -10,13 +10,14 @@ import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.15.
 // const budgetListInDB = ref(database, "budgetList")
 const budget = {
     name: " ",
-    salary: ["1000", "500"],
+    salary: [],
     expense: [],
     expenseTypeU: [],
     expenseTypes: ["Rent" , "Transportation", "Food", "Utilities", "Entertainment", "Misc", "Other"],
     sum: 0,
     salarySum: 0,
     moneyLeft: 0,
+    salaryTypeU: []
 
 }
 
@@ -66,19 +67,33 @@ addExpenseBtnEl.addEventListener("click", function() {
 
 addIncomeBtnEl.addEventListener("click", function() {
     const incomeAmount = Number(incomeAmountEl.value)
+    const incomeType = incomeInputEl.value
     budget.salary.push(incomeAmount)
-    calculateExpense()
+    budget.salaryTypeU.push(incomeType)
+    renderSalary()
 })
 
 
 
 
 function renderBudget() {
-    let listItems = "" 
+    let expenseListItems = "" 
     for (let i = 0; i < budget.expense.length; i++) {
-        listItems += `<li>${budget.expenseTypeU[i]} - $${budget.expense[i]}</li><hr />` 
+        expenseListItems += `<li>${budget.expenseTypeU[i]} - $${budget.expense[i]}</li><hr />` 
     }
-    expensesListEl.innerHTML = listItems 
+    expensesListEl.innerHTML = expenseListItems
+
+    calculateSum()
+    calculateExpense()
+    clearField()
+}
+
+function renderSalary() {
+    let salaryListItems = "" 
+    for (let i = 0; i < budget.salary.length; i++) {
+        salaryListItems += `<li>${budget.salaryTypeU[i]} - $${budget.salary[i]}</li><hr />` 
+    }
+    salaryListEl.innerHTML = salaryListItems 
 
     calculateSum()
     calculateExpense()
@@ -95,8 +110,8 @@ function calculateSum() {
 
 
 function calculateExpense() {
-    // const sum = budget.salary.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
-    // budget.salarySum = sum
+    const sum = budget.salary.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+    budget.salarySum = sum
     totalExpenseEl.innerHTML = `$${budget.salarySum}`
 
 
@@ -106,6 +121,9 @@ function calculateExpense() {
 function clearField() {
     document.getElementById("selectType").value = ""
     document.getElementById("input-amount").value = "$0"
+    document.getElementById("income-type").value = ""
+    document.getElementById("income-input-amount").value = ""
+    
 
 }
 
