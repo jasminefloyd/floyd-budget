@@ -2,153 +2,204 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Rubik', sans-serif;
-    background-color: whitesmoke;
 }
 
-.outer-container {
-    /* display: flex; */
+#home-page, #budget-details-overview {
+    display: none;
+}
+
+
+.app-wrapper {
+    display: flex;  /* Enables Flexbox layout */
     flex-direction: column;
-    max-height: fit-content;
-    margin: 30px auto;
-    padding: 50px;
-    border: 4px black solid;
-    border-radius: 6px;
-    /* height: 550px; */
-    width: 350px;
-    
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: whitesmoke;
+    height: auto;
+    border: 5px solid black;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
-.inner-container {
+.app-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+
+.header {
+    top: 0;
+    flex: 1;
+    width: 100%;
+    background-color: #d3d3d3;
+    padding: 10px;
+    display: flex; /* Flexbox for layout */
+    justify-content: space-between; /* Distribute content with space between */
+    align-items: center; /* Optional: Center content vertically */
+}
+
+.header > button {
+    background-color: #a85aa8;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 8%;
+    border-radius: 5px;
+}
+
+.header > h1 {
+    color: #a85aa8;
+    padding-left: 15px;
+}
+
+.popup {
+    display: none;        /* Initially hide the popup */
+    position: fixed;      /* Position over the window */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Center the popup */
+    background-color: white;  
+    padding: 25px;
+    padding-right: 35px;
+    border: 2px solid black;
+    border-radius: 5px;
+    z-index: 10; /* Ensure popup is above other content */
+    width: 80%;
+    text-align: left;
+}
+
+.close-popup {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Top Section on Budget Details Page */
+
+.top-section {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.widget {
     display: flex;
     flex-direction: column;
-    max-width: 320px;
+    flex-wrap: wrap;
+    border: 2px #c3c3c3 solid;
+    border-radius: 5px;
+    width: 85%;
+    box-shadow: 3px 3px 3px #ccc;
+    align-content: center;
 }
 
-img {
-    width: 150px;
-    margin-left: 85px; 
+#widget-content-area {
+    display: flex;
 }
 
-.box {
-    color: slategray;
-    background-color: #DCE1EB;
-    border: 0;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 20px;
-    text-align: center;
-    font-family: 'Rubik', sans-serif;
-    margin: 5px;
+#money-left-area {
+    flex: 1;
+    margin-right: auto;
+    display: flex;
+    width: 49%;
 }
 
-input:focus::placeholder {
-  color: transparent;
+#money-left-area > h2 {
+    color: orange;
 }
 
-#expenseHeader {
-    text-align: center;
-    font-size: 20px;
-    font-weight: bolder;
+#total-income-area {
+    flex: 1;
+    margin-left: auto;
+    display: flex;
+    width: 49%;
 }
 
-.totalContainers {
-    color: goldenrod;
-    margin-top: -15px;
-    margin-bottom: 25px;
-    font-size: 25px;
-    text-align: center;
-    font-weight: bold;
-
-}
-
-.calculationContainers{
-    display:inline-block;
-    margin-left: 35px;
+.progress-bar-area {
+    display: flex;
+    align-self: center;
+    margin: 10px;
 }
 
 
-.calculationLabel {
-    width:fit-content;
-    color: goldenrod;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    font-size: 15px;
-    text-align: center;
-    font-weight: bold;
 
-}
-  
-  ul {
-    margin-top: 30px;
-    list-style: none;
-    padding-left: 0;
-  }
-  
-  li {
-    margin-top: 5px;
-    font-size: 18px;
-    color: darkslategray;
-    font-family:Verdana, Geneva, Tahoma, sans-serif; 
-    list-style-type: none;
-  }
-
-
-
-button {
-    color: #FDFDFD;
-    background-color: #AC485A;
-    border: 0;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 20px;
-    text-align: center;
-    font-family: 'Rubik', sans-serif;
-}
-
+/* Middle Section on Budget Details Page */
 .tabs {
     display: flex;
     flex-direction: column;
-  }
+}
   
-  .tab-list {
+.tab-list {
     display: flex;
     list-style: none;
     padding: 0;
     margin: 0;
-  }
+}
   
-  .tab-link {
+.tab-link {
     padding: 10px 15px;
     border: 1px solid #ccc;
     margin-right: 5px;
     cursor: pointer;
     background-color: #f0f0f0; 
-  }
+}
   
-  .tab-link.active {
+.tab-link.active {
     background-color: #fff;
     border-bottom: 1px solid maroon;
-  }
+}
   
-  .tab-content {
+.tab-content {
     display: none; 
     padding: 15px;
     border-top: 1px solid #ccc;
-  }
+}
   
-  .tab-content.active {
+.tab-content.active {
     display: block; 
-  }
-
-
-
-#fds-tag {
-    margin-top: 5%;
-    margin-bottom: 0px; 
-    color: lightslategrey;
-    text-align: center;
-    font-family: 'Indie Flower', cursive;
-    font-weight: bold;
-    font-size:medium;
 }
 
+
+/* Bottom Section on Budget Details Page */
+ul {
+    margin-top: 30px;
+    list-style: none;
+    padding-left: 0;
+}
+  
+li {
+    margin-top: 5px;
+    font-size: 18px;
+    color: darkslategray;
+    font-family:Verdana, Geneva, Tahoma, sans-serif; 
+    list-style-type: none;
+}
+
+
+
+
+
+/* Footer Area */
+
+.fds-footer {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    justify-content: center;
+}
+
+.tagline {
+    padding: 10px;
+    color: #c3c3c3;
+    font-family: 'Indie Flower', cursive;
+    font-weight: bold;
+    font-size: medium;
+    text-align: center;
+}
