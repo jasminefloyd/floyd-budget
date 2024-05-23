@@ -22,7 +22,7 @@ const homeBtnEl = document.getElementById('home-btn')
 const budgetDetailsPageHeaderTitleEl = document.getElementById('budget-details-page-header-title')
 const newIncomeBtnEl = document.getElementById('new-income-btn')
 const newExpenseBtnEl = document.getElementById('new-expense-btn')
-budgetDetailsPageHeaderTitleEl.innerHTML = `${budget.name}`
+
 
 const typeSelectionEl = document.getElementById("selectType")
 const newExpenseDropEl = document.getElementById('droppy')
@@ -38,11 +38,10 @@ const submitIncomeBtnEl = document.getElementById('submit-income')
 
 const moneyLeftAmtEl = document.getElementById('money-left-amt')
 const totalIncomeAmtEl = document.getElementById('total-income-amt')
-const progressBarEl = document.querySelector('progress')
+const progressBarEl = document.getElementById('progress-bar')
 
 
-progressBarEl.setAttribute('max', budget.totalIncome)
-progressBarEl.setAttribute('value', budget.totalExpense)
+
 
 
 
@@ -65,7 +64,23 @@ const expenseListEl = document.getElementById('expense')
 
 //Variables
 
+
+
+
 //Functions
+
+tabLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+    // Deactivate all tabs
+    tabLinks.forEach((link) => link.classList.remove("active"))
+    tabContents.forEach((content) => content.classList.remove("active"))
+
+    // Activate the clicked tab
+    const tab = event.currentTarget.dataset.tab
+    event.currentTarget.classList.add("active")
+    document.getElementById(tab).classList.add("active")
+    })
+})
 
 
 
@@ -86,6 +101,7 @@ function renderExpense() {
     expenseListEl.innerHTML = expenseListItems
     calculateIncome()
     calculateExpense()
+    updateProgress()
     clearField()
 }
 
@@ -95,6 +111,7 @@ function renderExpense() {
 function calculateIncome() {
     const sum = budget.salary.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
     budget.totalIncome = sum
+    budget.moneyLeft = budget.totalIncome - budget.totalExpense
     totalIncomeAmtEl.innerHTML = `$${budget.totalIncome}`
 }
 
@@ -107,6 +124,7 @@ function renderIncome() {
     incomeListEl.innerHTML = salaryListItems 
     calculateIncome()
     calculateExpense()
+    updateProgress()
     clearField()
 }
 
@@ -123,6 +141,10 @@ function clearField() {
 }
 
 
+function updateProgress() {
+    progressBarEl.max = `${budget.totalIncome}`
+    progressBarEl.value = `${budget.totalExpense}`
+}
 
 
 function openExpensePopup() {
@@ -205,18 +227,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('new-income-btn').addEventListener('click', openIncomePopup);
     document.getElementById('close-income-popup').addEventListener('click', closePopup);
     document.getElementById('close-expense-popup').addEventListener('click', closePopup);
-    tabLinks.forEach((link) => {
-        link.addEventListener("click", (event) => {
-        // Deactivate all tabs
-        tabLinks.forEach((link) => link.classList.remove("active"))
-        tabContents.forEach((content) => content.classList.remove("active"))
+    budgetDetailsPageHeaderTitleEl.innerHTML = `${budget.name}`
     
-        // Activate the clicked tab
-        const tab = event.currentTarget.dataset.tab
-        event.currentTarget.classList.add("active")
-        document.getElementById(tab).classList.add("active")
-        })
-    })
 });
 
 

@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FDS Budget App</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Handlee" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <div class="app-wrapper">
@@ -24,8 +24,8 @@
                 <div class="header">
                     <button class="" id="home-btn">🏠</button>
                     <h1 class="header-title" id="budget-details-page-header-title">{Budget Title}</h1>
-                    <button class="" id="new-income-btn">Add Income</button>
-                    <button class="" id="new-expense-btn">Add Expense</button>
+                    <button class="" id="new-income-btn">+ Income</button>
+                    <button class="" id="new-expense-btn">+ Expense</button>
                     <div id="add-income-popup" class="popup">
                         <span class="close-popup" onclick="closePopup()">&times;</span>
                         <h2>Create Income</h2> 
@@ -41,16 +41,16 @@
                     <div class="widget" id="budget-widget">
                         <div id="widget-content-area">
                             <div class="" id="money-left-area">
-                                <p class="" id="money-left-label">money left</p>
-                                <h2 class="" id="money-left-amt">00</h2>
+                                <p class="" id="money-left-label">Money Left</p>
+                                <h2 class="" id="money-left-amt">$0.00</h2>
                             </div>
                             <div class="" id="total-income-area">
-                                <p class="" id="total-income-label">total budget</p>
-                                <h2 class="" id="total-income-amt">00</h2>
+                                <p class="" id="total-income-label">Total Budget</p>
+                                <h2 class="" id="total-income-amt">$0.00</h2>
                             </div>
                         </div>
                         <div class="progress-bar-area" id="progress-bar-area">
-                            <progress class="progress-bar" max="100" value="40"></progress>
+                            <progress class="progress-bar" id="progress-bar" max="100" value="40"></progress>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                                 <ul id="salary"></ul>
                             </div>
                         </div>
-                        <div class="tab-content active" id="expense-tab">
+                        <div class="tab-content" id="expense-tab">
                             <div class="ledger" id="expense-ledger-list">
                                 <ul id="expense"></ul>
                             </div>
