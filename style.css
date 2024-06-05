@@ -196,7 +196,7 @@ html, body {
   
 .tab-link.active {
     background-color: #fff;
-    border-bottom: 1px solid maroon;
+    border-bottom: 2px solid maroon;
 }
   
 .tab-content {

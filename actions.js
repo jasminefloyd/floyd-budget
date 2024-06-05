@@ -1,3 +1,14 @@
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
+// import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+
+// const appSettings = {
+//     databaseURL: "https://realtime-database-ae212-default-rtdb.firebaseio.com/"
+// }
+
+// const app = initializeApp(appSettings)
+// const database = getDatabase(app)
+// const budgetListInDB = ref(database, "budgetList")
+
 //Objects
 const budget = {
     id: 0,
@@ -71,16 +82,26 @@ const expenseListEl = document.getElementById('expense')
 
 tabLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
-    // Deactivate all tabs
-    tabLinks.forEach((link) => link.classList.remove("active"))
-    tabContents.forEach((content) => content.classList.remove("active"))
-
-    // Activate the clicked tab
-    const tab = event.currentTarget.dataset.tab
-    event.currentTarget.classList.add("active")
-    document.getElementById(tab).classList.add("active")
+      // Deactivate all tabs
+      tabLinks.forEach((link) => link.classList.remove("active"))
+      tabContents.forEach((content) => content.classList.remove("active"))
+  
+      // Activate the clicked tab
+      const tab = event.currentTarget.dataset.tab
+      event.currentTarget.classList.add("active")
+      document.getElementById(tab).classList.add("active")
     })
-})
+  })
+
+
+for (let i = 0; i < budget.expenseTypes.length; i++) {
+    let option = document.createElement("option")
+    option.value = budget.expenseTypes[i]
+    option.text = budget.expenseTypes[i]
+    typeSelectionEl.appendChild(option)
+}
+
+// push(budgetListInDB, inputTypeValue, inputTypeAmount)
 
 
 
@@ -107,7 +128,6 @@ function renderExpense() {
 
 
 
-
 function calculateIncome() {
     const sum = budget.salary.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
     budget.totalIncome = sum
@@ -127,8 +147,6 @@ function renderIncome() {
     updateProgress()
     clearField()
 }
-
-
 
 
 function clearField() {
@@ -167,13 +185,6 @@ newExpenseBtnEl.addEventListener("click", function() {
     document.getElementById("income-tab").classList.remove("active")
     document.getElementById("expense-tab").classList.add("active")
 
-    for (let i = 0; i < budget.expenseTypes.length; i++) {
-        let option = document.createElement("option")
-        option.value = budget.expenseTypes[i]
-        option.text = budget.expenseTypes[i]
-        typeSelectionEl.appendChild(option)
-    }
-
     submitExpenseBtnEl.addEventListener('click', function() {
         const expenseType = typeSelectionEl.value
         const expenseAmount = Number(expenseInputAmountEl.value)
@@ -183,8 +194,6 @@ newExpenseBtnEl.addEventListener("click", function() {
 
         closePopup()
         renderExpense()
-
-        // 
 
     })
 
