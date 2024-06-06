@@ -57,22 +57,20 @@
                 <div class="middle-section">
                     <div class="tabs">
                         <ul class="tab-list">
-                            <li class="tab-link active" data-tab="income-tab">Income</li>
-                            <li class="tab-link" data-tab="expense-tab">Expense</li>
+                            <li class="tab-link active" data-tab="tab-expense">Expense</li>
+                            <li class="tab-link" data-tab="tab-income">Income</li>
                         </ul>
                     </div>
                 </div>
                 <div class="bottom-section">
-                    <div class="" id="ledger-area">
-                        <div class="tab-content" id="income-tab">
-                            <div class="ledger" id="income-ledger-list">
-                                <ul id="salary"></ul>
-                            </div>
+                    <div class="tab-content active" id="tab-expense">
+                        <div class="ledger" id="expense-ledger-list">
+                            <ul id="expense"></ul>
                         </div>
-                        <div class="tab-content" id="expense-tab">
-                            <div class="ledger" id="expense-ledger-list">
-                                <ul id="expense"></ul>
-                            </div>
+                    </div>
+                    <div class="tab-content" id="tab-income">
+                        <div class="ledger" id="income-ledger-list">
+                            <ul id="salary"></ul>
                         </div>
                     </div>
                 </div>

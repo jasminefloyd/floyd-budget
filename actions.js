@@ -59,7 +59,7 @@ const progressBarEl = document.getElementById('progress-bar')
 
 //middle section
 const tabLinks = document.querySelectorAll(".tab-link")
-const tabContents = document.querySelectorAll(".tab-list")
+const tabContents = document.querySelectorAll(".tab-content")
 
 
 
@@ -80,18 +80,20 @@ const expenseListEl = document.getElementById('expense')
 
 //Functions
 
-tabLinks.forEach((link) => {
+  tabLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
-      // Deactivate all tabs
-      tabLinks.forEach((link) => link.classList.remove("active"))
-      tabContents.forEach((content) => content.classList.remove("active"))
-  
-      // Activate the clicked tab
-      const tab = event.currentTarget.dataset.tab
-      event.currentTarget.classList.add("active")
-      document.getElementById(tab).classList.add("active")
+    // Deactivate all tabs
+    tabLinks.forEach((link) => link.classList.remove("active"))
+    tabContents.forEach((content) => content.classList.remove("active"))
+    
+    // Activate the clicked tab
+    const tab = event.currentTarget.dataset.tab
+    event.currentTarget.classList.add("active")
+    document.getElementById(tab).classList.add("active")
     })
-  })
+})
+
+
 
 
 for (let i = 0; i < budget.expenseTypes.length; i++) {
@@ -182,8 +184,8 @@ function closePopup() {
 //Listeners 
 newExpenseBtnEl.addEventListener("click", function() {
     document.getElementById("create-expense").style.display = "none";
-    document.getElementById("income-tab").classList.remove("active")
-    document.getElementById("expense-tab").classList.add("active")
+    document.getElementById("tab-income").classList.remove("active")
+    document.getElementById("tab-expense").classList.add("active")
 
     submitExpenseBtnEl.addEventListener('click', function() {
         const expenseType = typeSelectionEl.value
@@ -202,8 +204,8 @@ newExpenseBtnEl.addEventListener("click", function() {
 
 newIncomeBtnEl.addEventListener("click", function() {
     document.getElementById("create-expense").style.display = "none";
-    document.getElementById("income-tab").classList.add("active")
-    document.getElementById("expense-tab").classList.remove("active")
+    document.getElementById("tab-income").classList.add("active")
+    document.getElementById("tab-expense").classList.remove("active")
 
     submitIncomeBtnEl.addEventListener('click', function() {
         const incomeAmount = Number(incomeInputAmountEl.value)
