@@ -29,6 +29,11 @@ const budget = {
 //DOM Elements
 
 //header
+const homePageEl = document.getElementById('home-page')
+const detailsPageEl = document.getElementById('budget-details-page')
+const detailsOverviewPageEl = document.getElementById('budget-details-overview')
+
+
 const homeBtnEl = document.getElementById('home-btn')
 const budgetDetailsPageHeaderTitleEl = document.getElementById('budget-details-page-header-title')
 const newIncomeBtnEl = document.getElementById('new-income-btn')
@@ -74,7 +79,7 @@ const expenseListEl = document.getElementById('expense')
 
 
 //Variables
-
+  
 
 
 
@@ -122,8 +127,8 @@ function renderExpense() {
         expenseListItems += `<li>${budget.expenseTypeU[i]} - $${budget.expense[i]}</li><hr />` 
     }
     expenseListEl.innerHTML = expenseListItems
-    calculateIncome()
-    calculateExpense()
+    // calculateIncome()
+    // calculateExpense()
     updateProgress()
     clearField()
 }
@@ -144,8 +149,8 @@ function renderIncome() {
         salaryListItems += `<li>${budget.salaryTypeU[i]} - $${budget.salary[i]}</li><hr />` 
     }
     incomeListEl.innerHTML = salaryListItems 
-    calculateIncome()
-    calculateExpense()
+    // calculateIncome()
+    // calculateExpense()
     updateProgress()
     clearField()
 }
@@ -182,6 +187,13 @@ function closePopup() {
 }
 
 //Listeners 
+homeBtnEl.addEventListener('click', function() {
+    homePageEl.style.display = 'initial'
+    detailsPageEl.style.display = 'none'
+    detailsOverviewPageEl.style.display = 'none'
+})
+
+
 newExpenseBtnEl.addEventListener("click", function() {
     document.getElementById("create-expense").style.display = "none";
     document.getElementById("tab-income").classList.remove("active")

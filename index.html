@@ -15,10 +15,21 @@
         <div class="app-content">
             <div class="page" id="home-page">
                 <div class="header">
-                    <h1 class="header-title" id="home-page-header-title">{Header Title}</h1>
-                    <button> + Add Budget</button>
-                    <button> ? Info</button>
+                    <h1 class="header-title" id="home-page-header-title">{Budget Title}</h1>
+                    <button class="" id="add-budget-btn">+ Add Budget</button>
+                    <button class="" id="app-info-btn">? Info</button>
+                    <div id="add-budget-popup" class="popup">
+                        <span class="close-popup" onclick="closePopup()">&times;</span>
+                        <h2>Create A Budget</h2> 
+                        <p id="">I'm the buttons for create income</p>
+                    </div>
+                    <div id="add-expense-popup" class="popup">
+                        <span class="close-popup" onclick="closePopup()">&times;</span>
+                        <h2>Create Expense</h2> 
+                        <p id="">I'm the buttons for create expense</p>
+                    </div>
                 </div>
+                
             </div>
             <div class="page" id="budget-details-page">
                 <div class="header">
@@ -107,8 +118,6 @@
 <script src="./actions.js"></script>    
 </body>
 </html>
-
-
 
 
 

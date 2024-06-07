@@ -4,7 +4,7 @@ html, body {
     font-family: "Noto Sans Display", sans-serif;
 }
 
-#home-page, #budget-details-overview {
+#budget-details-page, #budget-details-overview {
     display: none;
 }
 
@@ -27,6 +27,8 @@ html, body {
     flex: 1;
     flex-direction: column;
 }
+
+
 
 
 .header {
@@ -82,7 +84,6 @@ html, body {
     color: #a85aa8;
     padding: 10px 10px;
     font-size: large;
-    margin-left: -25px;
     width: 150%;
 
 }
