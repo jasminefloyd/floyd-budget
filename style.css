@@ -247,3 +247,44 @@ li {
     font-size: medium;
     text-align: center;
 }
+
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.budget-button {
+    width: 95%;
+    border-radius: 1.5em;
+    margin-top: 1em;
+    text-align: left;
+}
+
+
+
+
+.button-col-3 {
+    display: flex;
+    justify-content: space-between;
+}
+.button-col-1 > p {
+    font-size: medium;
+}
+
+.button-col-2 > p {
+    font-size: medium;
+}
+
+.button-col-3 > p {
+    font-size: medium;
+}
+
+.home-money-left{
+    color: green;
+}
+
+.home-expenses{
+   
+}
