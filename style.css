@@ -28,9 +28,6 @@ html, body {
     flex-direction: column;
 }
 
-
-
-
 .header {
     top: 0;
     width: 100%;
@@ -40,6 +37,29 @@ html, body {
     justify-content: space-between; /* Distribute content with space between */
     align-items: center; /* Optional: Center content vertically */
 }
+
+
+#add-budget-btn {
+    color: whitesmoke;
+    background-color: #a85aa8;
+    border: none;
+    width: 100%;
+    margin-left: 50px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: medium;
+    text-align: center;
+    padding: 10px 10px;
+}
+
+#app-info-btn {
+    border-radius: 5em;
+    margin-right: 1.5em;
+    margin-left: .5em;
+    font-size: large;
+    font-weight: bold;
+}
+
 
 
 #new-income-btn {
@@ -248,6 +268,8 @@ li {
     text-align: center;
 }
 
+/* Home Page Content */
+
 
 .home-container {
     display: flex;
@@ -260,31 +282,77 @@ li {
     border-radius: 1.5em;
     margin-top: 1em;
     text-align: left;
+    padding: 1em;
+    background: whitesmoke;
 }
 
 
+.button-col-1 > p {
+    font-size: large;
+    font-weight: bold;
+    margin: 0;
+    margin-left: .6em;
+}
 
+   
+.button-col-2 {
+    display: flex;
+    padding-top: .5em;
+    
+}
+
+
+.home-salary-container {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding-left: 1em;  
+}
+
+.home-salary-label {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.home-salary-value {
+    margin-left: .5em;
+    font-size: 1.2em;
+}
 
 .button-col-3 {
     display: flex;
-    justify-content: space-between;
-}
-.button-col-1 > p {
-    font-size: medium;
+    margin: 0;
+    margin-top: -1.5em;
 }
 
-.button-col-2 > p {
-    font-size: medium;
+.home-expenses-container {
+    display: flex;
+    margin-left: 1em;
 }
 
-.button-col-3 > p {
-    font-size: medium;
+.home-expenses-label {
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
-.home-money-left{
+.home-expenses-value {
+    color: red;
+    margin-left: .5em;
+    font-size: 1.2em;
+}
+
+.home-money-left-container {
+    display: flex;
+    margin-left: 3.5em;
+}
+
+.home-money-left-label {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.home-money-left-value {
     color: green;
-}
-
-.home-expenses{
-   
+    margin-left: .5em;
+    font-size: 1.2em;
 }
