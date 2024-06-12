@@ -4,7 +4,7 @@ html, body {
     font-family: "Noto Sans Display", sans-serif;
 }
 
-#budget-details-page, #budget-details-overview {
+#home-page, #budget-details-overview {
     display: none;
 }
 
