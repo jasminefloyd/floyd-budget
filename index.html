@@ -14,7 +14,7 @@
     <div class="app-wrapper">
         <div class="app-content">
             <div class="page" id="home-page">
-                <div class="header" id="home-page-header">
+                <div class="header">
                     <h1 class="header-title" id="home-page-header-title">Floyd's Budget App</h1>
                     <button id="add-budget-btn">+ Add New</button>
                     <button id="app-info-btn">?</button>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="page" id="budget-details-page" style="display: none;">
-                <div class="header" id="details-page-header">
+                <div class="header">
                     <button id="home-btn">🏠</button>
                     <h1 class="header-title" id="budget-details-page-header-title">Budget Title</h1>
                     <button id="new-income-btn">+ Income</button>
@@ -77,8 +77,7 @@
                     <span class="close-popup" id="close-expense-popup">&times;</span>
                     <h2>New Expense</h2> 
                     <select id="selectType" class="box">
-                        <option id="droppy" value="" disabled selected>Select Expense</option>
-                        <!-- Populate expense types dynamically -->
+                        <option value="" disabled selected>Select Expense</option>
                     </select>
                     <input type="number" id="expense-input-amount" class="box" placeholder="$0" />
                     <button id="submit-expense">Add Expense</button>
