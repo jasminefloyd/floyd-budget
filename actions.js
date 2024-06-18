@@ -1,477 +1,181 @@
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
-// import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+document.addEventListener('DOMContentLoaded', () => {
+    class Budget {
+        constructor(id, categories, name, salary, expenses, e_total, s_total, moneyRem) {
+            this.id = id;
+            this.categories = categories || [];
+            this.name = name;
+            this.salary = salary || [];
+            this.expenses = expenses || [];
+            this.e_total = e_total || 0;
+            this.s_total = s_total || 0;
+            this.moneyRem = moneyRem || 0;
+            this.expenseTypeU = [];
+            this.salaryTypeU = [];
+        }
 
-// const appSettings = {
-//     databaseURL: "https://realtime-database-ae212-default-rtdb.firebaseio.com/"
-// }
+        addSalary(amount, type) {
+            this.salary.push(amount);
+            this.salaryTypeU.push(type);
+            this.calculateIncome();
+            this.renderIncome();
+        }
 
-// const app = initializeApp(appSettings)
-// const database = getDatabase(app)
-// const budgetListInDB = ref(database, "budgetList")
+        addExpense(amount, type) {
+            this.expenses.push(amount);
+            this.expenseTypeU.push(type);
+            this.calculateExpense();
+            this.renderExpense();
+        }
 
-//Objects
-const budget = {
-    id: 0,
-    name: "Test Budget",
-    salary: [],
-    salaryTypeU: [],
-    expense: [],
-    expenseTypeU: [],
-    expenseTypes: ["Rent" , "Transportation", "Food", "Utilities", "Entertainment", "Misc", "Other"],
-    sum: 0,
-    moneyLeft: 0,
-    totalIncome: 0,
-    totalExpense: 0
+        calculateIncome() {
+            this.s_total = this.salary.reduce((acc, curr) => acc + curr, 0);
+            this.calculateMoneyRemaining();
+        }
 
+        calculateExpense() {
+            this.e_total = this.expenses.reduce((acc, curr) => acc + curr, 0);
+            this.calculateMoneyRemaining();
+        }
 
-}
+        calculateMoneyRemaining() {
+            this.moneyRem = this.s_total - this.e_total;
+            document.getElementById('money-left-amt').innerHTML = `$${this.moneyRem}`;
+        }
 
-//DOM Elements
+        renderIncome() {
+            let salaryListItems = "";
+            for (let i = 0; i < this.salary.length; i++) {
+                salaryListItems += `<li>${this.salaryTypeU[i]} - $${this.salary[i]}</li><hr />`;
+            }
+            document.getElementById('salary').innerHTML = salaryListItems;
+            this.updateProgress();
+            this.clearField();
+        }
 
-//header
-const homePageEl = document.getElementById('home-page')
-const detailsPageEl = document.getElementById('budget-details-page')
-const detailsOverviewPageEl = document.getElementById('budget-details-overview')
+        renderExpense() {
+            let expenseListItems = "";
+            for (let i = 0; i < this.expenses.length; i++) {
+                expenseListItems += `<li>${this.expenseTypeU[i]} - $${this.expenses[i]}</li><hr />`;
+            }
+            document.getElementById('expense').innerHTML = expenseListItems;
+            this.updateProgress();
+            this.clearField();
+        }
 
+        clearField() {
+            document.getElementById('selectType').value = "";
+            document.getElementById('expense-input-amount').value = "$0";
+            document.getElementById('income-type').value = "";
+            document.getElementById('income-input-amount').value = "";
+        }
 
-const homeBtnEl = document.getElementById('home-btn')
-const budgetDetailsPageHeaderTitleEl = document.getElementById('budget-details-page-header-title')
-const newIncomeBtnEl = document.getElementById('new-income-btn')
-const newExpenseBtnEl = document.getElementById('new-expense-btn')
-
-
-const typeSelectionEl = document.getElementById("selectType")
-const newExpenseDropEl = document.getElementById('droppy')
-const expenseInputAmountEl = document.getElementById('expense-input-amount')
-const incomeInputAmountEl = document.getElementById('income-input-amount')
-const submitExpenseBtnEl = document.getElementById('submit-expense')
-const submitIncomeBtnEl = document.getElementById('submit-income')
-
-
-
-
-//top section
-
-const moneyLeftAmtEl = document.getElementById('money-left-amt')
-const totalIncomeAmtEl = document.getElementById('total-income-amt')
-const progressBarEl = document.getElementById('progress-bar')
-
-
-
-
-
-
-
-//middle section
-const tabLinks = document.querySelectorAll(".tab-link")
-const tabContents = document.querySelectorAll(".tab-content")
-
-
-
-
-//bottom section
-const incomeInputEl = document.getElementById('income-type')
-const incomeAmountEl = document.getElementById('income-input-amount')
-const inputAmountEl = document.getElementById('input-amount')
-const incomeListEl = document.getElementById('salary')
-const expenseListEl = document.getElementById('expense')
-
-
-
-//Variables
-  
-
-
-
-//Functions
-
-  tabLinks.forEach((link) => {
-    link.addEventListener("click", (event) => {
-    // Deactivate all tabs
-    tabLinks.forEach((link) => link.classList.remove("active"))
-    tabContents.forEach((content) => content.classList.remove("active"))
-    
-    // Activate the clicked tab
-    const tab = event.currentTarget.dataset.tab
-    event.currentTarget.classList.add("active")
-    document.getElementById(tab).classList.add("active")
-    })
-})
-
-
-
-
-for (let i = 0; i < budget.expenseTypes.length; i++) {
-    let option = document.createElement("option")
-    option.value = budget.expenseTypes[i]
-    option.text = budget.expenseTypes[i]
-    typeSelectionEl.appendChild(option)
-}
-
-// push(budgetListInDB, inputTypeValue, inputTypeAmount)
-
-
-
-function calculateExpense() {
-    const sum = budget.expense.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
-    budget.totalExpense = sum
-    budget.moneyLeft = budget.totalIncome - budget.totalExpense
-    moneyLeftAmtEl.innerHTML = `$${budget.moneyLeft}`
-
-}
-
-function renderExpense() {
-    let expenseListItems = " " 
-    for (let i = 0; i < budget.expense.length; i++) {
-        expenseListItems += `<li>${budget.expenseTypeU[i]} - $${budget.expense[i]}</li><hr />` 
+        updateProgress() {
+            document.getElementById('progress-bar').max = `${this.s_total}`;
+            document.getElementById('progress-bar').value = `${this.e_total}`;
+        }
     }
-    expenseListEl.innerHTML = expenseListItems
-    // calculateIncome()
-    // calculateExpense()
-    updateProgress()
-    clearField()
-}
 
+    const budgets = [];
+    let currentBudget;
 
+    const homeBtnEl = document.getElementById('home-btn');
+    const addNewBudgetBtnEl = document.getElementById('add-budget-btn');
+    const submitNewBudgetBtnEl = document.getElementById('create-budget');
+    const newIncomeBtnEl = document.getElementById('new-income-btn');
+    const newExpenseBtnEl = document.getElementById('new-expense-btn');
+    const submitExpenseBtnEl = document.getElementById('submit-expense');
+    const submitIncomeBtnEl = document.getElementById('submit-income');
+    const budgetNameInputEl = document.getElementById('budget-name');
+    const budgetListEl = document.getElementById('budget-list');
+    const closeNewBudgetPopupEl = document.getElementById('close-new-budget-popup');
+    const closeExpensePopupEl = document.getElementById('close-expense-popup');
+    const closeIncomePopupEl = document.getElementById('close-income-popup');
 
-function calculateIncome() {
-    const sum = budget.salary.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
-    budget.totalIncome = sum
-    budget.moneyLeft = budget.totalIncome - budget.totalExpense
-    totalIncomeAmtEl.innerHTML = `$${budget.totalIncome}`
-}
-
-
-function renderIncome() {
-    let salaryListItems = "" 
-    for (let i = 0; i < budget.salary.length; i++) {
-        salaryListItems += `<li>${budget.salaryTypeU[i]} - $${budget.salary[i]}</li><hr />` 
+    const openPopup = (popupId) => {
+        document.getElementById(popupId).style.display = 'block';
     }
-    incomeListEl.innerHTML = salaryListItems 
-    // calculateIncome()
-    // calculateExpense()
-    updateProgress()
-    clearField()
-}
 
+    const closePopup = (popupId) => {
+        document.getElementById(popupId).style.display = 'none';
+    }
 
-function clearField() {
-    document.getElementById("selectType").value = ""
-    document.getElementById("expense-input-amount").value = "$0"
-    document.getElementById("income-type").value = ""
-    document.getElementById("income-input-amount").value = ""
-    
+    addNewBudgetBtnEl.addEventListener('click', () => openPopup('create-new-budget'));
 
-}
+    closeNewBudgetPopupEl.addEventListener('click', () => closePopup('create-new-budget'));
+    closeExpensePopupEl.addEventListener('click', () => closePopup('create-expense'));
+    closeIncomePopupEl.addEventListener('click', () => closePopup('create-income'));
 
+    submitNewBudgetBtnEl.addEventListener('click', () => {
+        const budgetName = budgetNameInputEl.value.trim();
+        if (budgetName) {
+            const newBudget = new Budget(budgets.length + 1, [], budgetName, [], [], 0, 0, 0);
+            budgets.push(newBudget);
+            const budgetButton = document.createElement('button');
+            budgetButton.className = 'budget-button';
+            budgetButton.innerHTML = `
+                <div class="button-col-1">
+                    <p class="home-budget-name">${budgetName}</p>
+                </div>
+                <div class="button-col-2">
+                    <div class="home-salary-container">
+                        <p class="home-salary-label">Salary: </p>
+                        <p class="home-salary-value">$000.00</p>
+                    </div>
+                </div>
+                <div class="button-col-3">
+                    <div class="home-expenses-container">
+                        <p class="home-expenses-label">Expenses: </p>
+                        <p class="home-expenses-value">$000.00</p>
+                    </div>
+                    <div class="home-money-left-container">
+                        <p class="home-money-left-label">Money Left: </p>
+                        <p class="home-money-left-value">$000.00</p>
+                    </div>
+                </div>
+            `;
+            budgetButton.addEventListener('click', () => {
+                currentBudget = newBudget;
+                document.getElementById('home-page').style.display = 'none';
+                document.getElementById('budget-details-page').style.display = 'block';
+                document.getElementById('budget-details-page-header-title').innerText = budgetName;
+                currentBudget.calculateIncome();
+                currentBudget.calculateExpense();
+            });
+            budgetListEl.appendChild(budgetButton);
+            closePopup('create-new-budget');
+            budgetNameInputEl.value = '';
+        }
+    });
 
-function updateProgress() {
-    progressBarEl.max = `${budget.totalIncome}`
-    progressBarEl.value = `${budget.totalExpense}`
-}
+    newIncomeBtnEl.addEventListener('click', () => openPopup('create-income'));
+    newExpenseBtnEl.addEventListener('click', () => openPopup('create-expense'));
 
+    submitIncomeBtnEl.addEventListener('click', () => {
+        const incomeType = document.getElementById('income-type').value.trim();
+        const incomeAmount = parseFloat(document.getElementById('income-input-amount').value.trim());
+        if (incomeType && !isNaN(incomeAmount) && currentBudget) {
+            currentBudget.addSalary(incomeAmount, incomeType);
+            closePopup('create-income');
+        }
+    });
 
-function openExpensePopup() {
-    document.getElementById("create-expense").style.display = "block";
-}
+    submitExpenseBtnEl.addEventListener('click', () => {
+        const expenseType = document.getElementById('selectType').value.trim();
+        const expenseAmount = parseFloat(document.getElementById('expense-input-amount').value.trim());
+        if (expenseType && !isNaN(expenseAmount) && currentBudget) {
+            currentBudget.addExpense(expenseAmount, expenseType);
+            closePopup('create-expense');
+        }
+    });
 
-function openIncomePopup() {
-    document.getElementById("create-income").style.display = "block";
-}
+    homeBtnEl.addEventListener('click', () => {
+        document.getElementById('home-page').style.display = 'block';
+        document.getElementById('budget-details-page').style.display = 'none';
+    });
 
-
-function closePopup() {
-    document.getElementById("create-income").style.display = "none";
-    document.getElementById("create-expense").style.display = "none";
-}
-
-//Listeners 
-homeBtnEl.addEventListener('click', function() {
-    homePageEl.style.display = 'initial'
-    detailsPageEl.style.display = 'none'
-    detailsOverviewPageEl.style.display = 'none'
-})
-
-
-newExpenseBtnEl.addEventListener("click", function() {
-    document.getElementById("create-expense").style.display = "none";
-    document.getElementById("tab-income").classList.remove("active")
-    document.getElementById("tab-expense").classList.add("active")
-
-    submitExpenseBtnEl.addEventListener('click', function() {
-        const expenseType = typeSelectionEl.value
-        const expenseAmount = Number(expenseInputAmountEl.value)
-    
-        budget.expense.push(expenseAmount)
-        budget.expenseTypeU.push(expenseType) 
-
-        closePopup()
-        renderExpense()
-
-    })
-
-   
-})
-
-newIncomeBtnEl.addEventListener("click", function() {
-    document.getElementById("create-expense").style.display = "none";
-    document.getElementById("tab-income").classList.add("active")
-    document.getElementById("tab-expense").classList.remove("active")
-
-    submitIncomeBtnEl.addEventListener('click', function() {
-        const incomeAmount = Number(incomeInputAmountEl.value)
-        const incomeType = incomeInputEl.value
-
-        budget.salary.push(incomeAmount)
-        budget.salaryTypeU.push(incomeType)
-
-        closePopup()
-        renderIncome()
-
-    })
-
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    document.getElementById('new-expense-btn').addEventListener('click', openExpensePopup);
-    document.getElementById('new-income-btn').addEventListener('click', openIncomePopup);
-    document.getElementById('close-income-popup').addEventListener('click', closePopup);
-    document.getElementById('close-expense-popup').addEventListener('click', closePopup);
-    budgetDetailsPageHeaderTitleEl.innerHTML = `${budget.name}`
-    
+    document.querySelectorAll('.close-popup').forEach(el => {
+        el.addEventListener('click', () => {
+            el.parentElement.style.display = 'none';
+        });
+    });
 });
-
-
-
-
-
-/*
-
-// Draw the chart and set the chart values
-function drawChart() {
-  var data = google.visualization.arrayToDataTable([
-  ['Expense', 'Cost'],
-  ['Work', 8],
-  ['Eat', 2],
-  ['TV', 4],
-  ['Gym', 2],
-  ['Sleep', 8]
-]);
-
-  // Optional; add a title and set the width and height of the chart
-  var options = {'title':'Budget Overview', 'width':550, 'height':400};
-
-  // Display the chart inside the <div> element with id="piechart"
-  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-  chart.draw(data, options);
-}
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
-// import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
-
-// const appSettings = {
-//     databaseURL: "https://realtime-database-ae212-default-rtdb.firebaseio.com/"
-// }
-
-// const app = initializeApp(appSettings)
-// const database = getDatabase(app)
-// const budgetListInDB = ref(database, "budgetList")
-// const budget = {
-//     name: "Test Budget",
-//     salary: [],
-//     expense: [],
-//     expenseTypeU: [],
-//     expenseTypes: ["Rent" , "Transportation", "Food", "Utilities", "Entertainment", "Misc", "Other"],
-//     sum: 0,
-//     salarySum: 0,
-//     moneyLeft: 0,
-//     salaryTypeU: []
-
-// }
-
-
-// //Header Elements
-// const headerTitleEl = document.getElementById('budget-page-header-title')
-// const createNewExpenseBtnEl = document.getElementById('create-expense-btn')
-// const createNewIncomeBtnEl = document.getElementById('create-income-btn')
-
-// const typeSelectionEl = document.getElementById("selectType")
-// const incomeInputEl = document.getElementById("income-type")
-// const incomeAmountEl = document.getElementById("income-input-amount")
-// const inputAmountEl = document.getElementById("input-amount")
-// const addExpenseBtnEl = document.getElementById("add-expense")
-// const addIncomeBtnEl = document.getElementById("add-income")
-// const expensesListEl = document.getElementById("expenses")
-// const salaryListEl = document.getElementById("salary")
-
-// const totalSumEl = document.getElementById("total-sum")
-// const totalExpenseEl = document.getElementById("expense-amt")
-
-
-// const tabLinks = document.querySelectorAll(".tab-link")
-// const tabContents = document.querySelectorAll(".tab-content")
-
-// headerTitleEl.innerHTML = `${budget.name}`
-
-
-// tabLinks.forEach((link) => {
-//     link.addEventListener("click", (event) => {
-//       // Deactivate all tabs
-//       tabLinks.forEach((link) => link.classList.remove("active"))
-//       tabContents.forEach((content) => content.classList.remove("active"))
-  
-//       // Activate the clicked tab
-//       const tab = event.currentTarget.dataset.tab
-//       event.currentTarget.classList.add("active")
-//       document.getElementById(tab).classList.add("active")
-//     })
-//   })
-
-// for (let i = 0; i < budget.expenseTypes.length; i++) {
-//     let option = document.createElement("option")
-//     option.value = budget.expenseTypes[i]
-//     option.text = budget.expenseTypes[i]
-//     typeSelectionEl.appendChild(option)
-//   }
-
-// // push(budgetListInDB, inputTypeValue, inputTypeAmount)
-
-
-
-
-
-
-// function renderBudget() {
-//     let expenseListItems = "" 
-//     for (let i = 0; i < budget.expense.length; i++) {
-//         expenseListItems += `<li>${budget.expenseTypeU[i]} - $${budget.expense[i]}</li><hr />` 
-//     }
-//     expensesListEl.innerHTML = expenseListItems
-//     calculateSum()
-//     calculateExpense()
-//     clearField()
-// }
-
-// function renderSalary() {
-//     let salaryListItems = "" 
-//     for (let i = 0; i < budget.salary.length; i++) {
-//         salaryListItems += `<li>${budget.salaryTypeU[i]} - $${budget.salary[i]}</li><hr />` 
-//     }
-//     salaryListEl.innerHTML = salaryListItems 
-//     calculateSum()
-//     calculateExpense()
-//     clearField()
-// }
-
-
-// function calculateSum() {
-//     const sum = budget.expense.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
-//     budget.sum = sum
-//     totalSumEl.innerHTML = `$${budget.sum}`
-// }
-
-
-
-// function calculateExpense() {
-//     const sum = budget.salary.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
-//     budget.salarySum = sum
-//     totalExpenseEl.innerHTML = `$${budget.salarySum - budget.sum}`
-
-
-// }
-
-    
-// function clearField() {
-//     document.getElementById("selectType").value = ""
-//     document.getElementById("input-amount").value = "$0"
-//     document.getElementById("income-type").value = ""
-//     document.getElementById("income-input-amount").value = ""
-    
-
-// }
-
-
-// function openExpensePopup() {
-//     document.getElementById("create-expense").style.display = "block";
-// }
-
-// function openIncomePopup() {
-//     document.getElementById("create-income").style.display = "block";
-// }
-
-
-// function closePopup() {
-//     document.getElementById("create-income").style.display = "none";
-//     document.getElementById("create-expense").style.display = "none";
-// }
-
-
-// document.addEventListener('DOMContentLoaded', (event) => {
-//     document.getElementById('create-expense-btn').addEventListener('click', openExpensePopup);
-//     document.getElementById('create-income-btn').addEventListener('click', openIncomePopup);
-//     document.getElementById('close-income-popup').addEventListener('click', closePopup);
-//     document.getElementById('close-expense-popup').addEventListener('click', closePopup);
-// });
-
-
-  

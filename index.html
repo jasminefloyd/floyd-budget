@@ -14,140 +14,42 @@
     <div class="app-wrapper">
         <div class="app-content">
             <div class="page" id="home-page">
-                <div class="header">
-                    <h1 class="header-title" id="home-page-header-title">{Budget Title}</h1>
-                    <button class="" id="add-budget-btn">+ Add Budget</button>
-                    <button class="" id="app-info-btn" >?</button>
-                    <div id="add-budget-popup" class="popup">
-                        <span class="close-popup" onclick="closePopup()">&times;</span>
-                        <h2>Create A Budget</h2> 
-                        <p id="">I'm the buttons for create income</p>
-                    </div>
-                    <div id="add-expense-popup" class="popup">
-                        <span class="close-popup" onclick="closePopup()">&times;</span>
-                        <h2>Create Expense</h2> 
-                        <p id="">I'm the buttons for create expense</p>
+                <div class="header" id="home-page-header">
+                    <h1 class="header-title" id="home-page-header-title">Floyd's Budget App</h1>
+                    <button id="add-budget-btn">+ Add New</button>
+                    <button id="app-info-btn">?</button>
+                    <div id="create-new-budget" class="popup">
+                        <span class="close-popup" id="close-new-budget-popup">&times;</span>
+                        <h2>New Budget</h2> 
+                        <input type="text" id="budget-name" class="box" placeholder="Budget Name" />
+                        <button id="create-budget">Create New Budget</button>
                     </div>
                 </div>
-                <div class="home-container">
-                    <button class="budget-button">
-                        <div class="button-col-1">
-                            <p class="home-budget-name">Budget Name</p>
-                        </div>
-                        <div class="button-col-2">
-                            <div class="home-salary-container">
-                                <p class="home-salary-label">Salary: </p>
-                                <p class="home-salary-value">$000.00</p>
-                            </div>
-                        </div>
-                        <div class="button-col-3">
-                            <div class="home-expenses-container">
-                                <p class="home-expenses-label">Expenses: </p>
-                                <p class="home-expenses-value">$000.00</p>
-                            </div>
-                            <div class="home-money-left-container">
-                                <p class="home-money-left-label">Money Left: </p>
-                                <p class="home-money-left-value">$000.00</p>
-                            </div>
-                        </div>
-                    </button>
-                    <button class="budget-button">
-                        <div class="button-col-1">
-                            <p class="home-budget-name">Budget Name</p>
-                        </div>
-                        <div class="button-col-2">
-                            <div class="home-salary-container">
-                                <p class="home-salary-label">Salary: </p>
-                                <p class="home-salary-value">$000.00</p>
-                            </div>
-                        </div>
-                        <div class="button-col-3">
-                            <div class="home-expenses-container">
-                                <p class="home-expenses-label">Expenses: </p>
-                                <p class="home-expenses-value">$000.00</p>
-                            </div>
-                            <div class="home-money-left-container">
-                                <p class="home-money-left-label">Money Left: </p>
-                                <p class="home-money-left-value">$000.00</p>
-                            </div>
-                        </div>
-                    </button>
-                    <button class="budget-button">
-                        <div class="button-col-1">
-                            <p class="home-budget-name">Budget Name</p>
-                        </div>
-                        <div class="button-col-2">
-                            <div class="home-salary-container">
-                                <p class="home-salary-label">Salary: </p>
-                                <p class="home-salary-value">$000.00</p>
-                            </div>
-                        </div>
-                        <div class="button-col-3">
-                            <div class="home-expenses-container">
-                                <p class="home-expenses-label">Expenses: </p>
-                                <p class="home-expenses-value">$000.00</p>
-                            </div>
-                            <div class="home-money-left-container">
-                                <p class="home-money-left-label">Money Left: </p>
-                                <p class="home-money-left-value">$000.00</p>
-                            </div>
-                        </div>
-                    </button>
-                    <button class="budget-button">
-                        <div class="button-col-1">
-                            <p class="home-budget-name">Budget Name</p>
-                        </div>
-                        <div class="button-col-2">
-                            <div class="home-salary-container">
-                                <p class="home-salary-label">Salary: </p>
-                                <p class="home-salary-value">$000.00</p>
-                            </div>
-                        </div>
-                        <div class="button-col-3">
-                            <div class="home-expenses-container">
-                                <p class="home-expenses-label">Expenses: </p>
-                                <p class="home-expenses-value">$000.00</p>
-                            </div>
-                            <div class="home-money-left-container">
-                                <p class="home-money-left-label">Money Left: </p>
-                                <p class="home-money-left-value">$000.00</p>
-                            </div>
-                        </div>
-                    </button>
+                <div class="home-container" id="budget-list">
+                    <!-- Dynamic budget list items will be appended here -->
                 </div>
-                
             </div>
-            <div class="page" id="budget-details-page">
-                <div class="header">
-                    <button class="" id="home-btn">🏠</button>
-                    <h1 class="header-title" id="budget-details-page-header-title">{Budget Title}</h1>
-                    <button class="" id="new-income-btn">+ Income</button>
-                    <button class="" id="new-expense-btn">+ Expense</button>
-                    <div id="add-income-popup" class="popup">
-                        <span class="close-popup" onclick="closePopup()">&times;</span>
-                        <h2>Create Income</h2> 
-                        <p id="">I'm the buttons for create income</p>
-                    </div>
-                    <div id="add-expense-popup" class="popup">
-                        <span class="close-popup" onclick="closePopup()">&times;</span>
-                        <h2>Create Expense</h2> 
-                        <p id="">I'm the buttons for create expense</p>
-                    </div>
+            <div class="page" id="budget-details-page" style="display: none;">
+                <div class="header" id="details-page-header">
+                    <button id="home-btn">🏠</button>
+                    <h1 class="header-title" id="budget-details-page-header-title">Budget Title</h1>
+                    <button id="new-income-btn">+ Income</button>
+                    <button id="new-expense-btn">+ Expense</button>
                 </div>
                 <div class="top-section">
                     <div class="widget" id="budget-widget">
                         <div id="widget-content-area">
-                            <div class="" id="money-left-area">
-                                <p class="" id="money-left-label">Money Left</p>
-                                <h2 class="" id="money-left-amt">$0.00</h2>
+                            <div id="money-left-area">
+                                <p id="money-left-label">Money Left</p>
+                                <h2 id="money-left-amt">$0.00</h2>
                             </div>
-                            <div class="" id="total-income-area">
-                                <p class="" id="total-income-label">Total Budget</p>
-                                <h2 class="" id="total-income-amt">$0.00</h2>
+                            <div id="total-income-area">
+                                <p id="total-income-label">Total Budget</p>
+                                <h2 id="total-income-amt">$0.00</h2>
                             </div>
                         </div>
                         <div class="progress-bar-area" id="progress-bar-area">
-                            <progress class="progress-bar" id="progress-bar" max="100" value="40"></progress>
+                            <progress class="progress-bar" id="progress-bar" max="100" value="0"></progress>
                         </div>
                     </div>
                 </div>
@@ -176,6 +78,7 @@
                     <h2>New Expense</h2> 
                     <select id="selectType" class="box">
                         <option id="droppy" value="" disabled selected>Select Expense</option>
+                        <!-- Populate expense types dynamically -->
                     </select>
                     <input type="number" id="expense-input-amount" class="box" placeholder="$0" />
                     <button id="submit-expense">Add Expense</button>
@@ -188,13 +91,6 @@
                     <button id="submit-income">Add Income</button>
                 </div>
             </div>
-            <div class="page" id="budget-details-overview">
-                <div class="header">
-                    <button>&#60</button>
-                    <h1 class="header-title" id="budget-details-overview-header-title">{Header Title}</h1>
-                    <button>? Info</button>
-                </div>
-            </div>
             <div class="fds-footer">
                 <p class="tagline">🏆 Greatness Magnified - An FDS Lifestyle</p>
             </div>
@@ -204,145 +100,3 @@
 <script src="./actions.js"></script>    
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <!DOCTYPE html>
- <html>
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>FDS Budget App</title>
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" />
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" />
-            <link rel="stylesheet" href="style.css">
-        </head>
-        <body>
-            <div class="app-wrapper" id="">
-                <main class="app-content">
-                    <div class="page" id="home-page">
-                        <header class="app-header">
-                            <h1 id="header-title">FDS Budgeting App</h1>
-                            <button>➕</button>
-                            <button>?</button>
-                        </header>
-                        <div class="budget-list" id="">
-                            <button class="budget-list-button" id="">Budget Name</button>
-                            <button class="budget-list-button" id="">Budget Name</button>
-                            <button class="budget-list-button" id="">Budget Name</button>
-                        </div>
-                    </div>
-                    <div class="page" id="budget-page">
-                        <header class="app-header">
-                            <button>🏠</button>
-                            <h1 id="budget-page-header-title">{Budget Name}</h1>
-                            <button id="create-expense-btn">Add Expense</button>
-                            <button id="create-income-btn">Add Income</button>
-                        </header>
-                        <div class="top-section">
-                            <div class="widget" id="budget-widget expenseReport">
-                                <div id="total-income-area">
-                                    <p class="" id="">starting income</p>
-                                    <h2 id="total-sum">$0.00</h2>
-                                </div>
-                                <div id="money-left-area">
-                                    <p class="" id="">left to spend</p>
-                                    <h2 id="total-sum">$0.00</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="middle-section">
-                            <div class="tabs">
-                                <ul class="tab-list">
-                                    <li class="tab-link active" data-tab="tab-1">Expenses</li>
-                                    <li class="tab-link" data-tab="tab-2">Income</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="bottom-section">
-                            <div id="tab-1" class="tab-content active">
-                                <div class="inner-container" id="expenseSection">
-                                    <div class="ledger">
-                                        <ul id="expenses"></ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="tab-2" class="tab-content">
-                                <div class="inner-container" id="expenseSection">
-                                    <div class="ledger">
-                                        <ul id="salary"></ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="create-expense" class="popup">
-                            <span class="close-popup" id="close-expense-popup">&times;</span>
-                            <h2>New Expense</h2> 
-                            <select id="selectType" class="box">
-                                <option id="droppy" value="" disabled selected>Select Expense</option>
-                            </select>
-                            <input type="number" id="input-amount" class="box" placeholder="$0" />
-                            <button id="add-expense">Add Expense</button>
-                        </div>
-                        <div id="create-income" class="popup">
-                            <span class="close-popup" id="close-income-popup">&times;</span>
-                            <h2>New Income</h2> 
-                            <input type="text" id="income-type" class="box" placeholder="Income Name" />
-                            <input type="number" id="income-input-amount" class="box" placeholder="$0" />
-                            <button id="add-income">Add Income</button>
-                        </div>
-                    </div>
-                    <div class="page" id="budget-details-page">
-                        <header class="app-header">
-                            <button><</button>
-                            <h1 id="header-title">{Budget Name} Overview</h1>
-                            <button>➕</button>
-                            <button>?</button>
-                        </header>
-                    </div>
-                </main>
-                <footer>     
-                    <p id="fds-tag">🏆 Greatness Magnified - An FDS Lifestyle </p>
-                </footer>
-            </div>      
-            <script src="actions.js" type="module"></script>
-        </body>
-    </html> -->

@@ -4,9 +4,10 @@ html, body {
     font-family: "Noto Sans Display", sans-serif;
 }
 
-#home-page, #budget-details-overview {
+#budget-details-overview {
     display: none;
 }
+
 
 
 .app-wrapper {
@@ -16,7 +17,7 @@ html, body {
     left: 0;
     width: 100%;
     background-color: whitesmoke;
-    height: auto;
+    height: 100dvh;
     border: 5px solid black;
     box-sizing: border-box;
     overflow-x: hidden;
@@ -104,7 +105,7 @@ html, body {
     color: #a85aa8;
     padding: 10px 10px;
     font-size: large;
-    width: 150%;
+    width: 145%;
 
 }
 
@@ -250,23 +251,7 @@ li {
 
 
 
-/* Footer Area */
 
-.fds-footer {
-    display: flex;
-    flex: 1;
-    width: 100%;
-    justify-content: center;
-}
-
-.tagline {
-    padding: 10px;
-    color: #c3c3c3;
-    font-family: "Shantell Sans", cursive;
-    font-weight: lighter;
-    font-size: medium;
-    text-align: center;
-}
 
 /* Home Page Content */
 
@@ -355,4 +340,24 @@ li {
     color: green;
     margin-left: .5em;
     font-size: 1.2em;
+}
+
+
+/* Footer Area */
+.fds-footer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+}
+
+.tagline {
+    color: #c3c3c3;
+    font-family: "Shantell Sans", cursive;
+    font-weight: lighter;
+    font-size: medium;
+    text-align: center;
 }
