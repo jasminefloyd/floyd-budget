@@ -40,6 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
         calculateMoneyRemaining() {
             this.moneyRem = this.s_total - this.e_total;
             document.getElementById('money-left-amt').innerHTML = `$${this.moneyRem}`;
+            document.getElementById('total-income-amt').innerHTML = `$${this.s_total}`;
+            document.getElementById('home-money-left-value').innerHTML = `$${this.moneyRem}`;
         }
 
         renderIncome() {
@@ -64,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         clearField() {
             document.getElementById('selectType').value = "";
-            document.getElementById('expense-input-amount').value = "$0";
+            document.getElementById('expense-input-amount').value = "";
             document.getElementById('income-type').value = "";
             document.getElementById('income-input-amount').value = "";
         }
@@ -74,6 +76,33 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('progress-bar').value = `${this.e_total}`;
         }
     }
+
+    const tabLinks = document.querySelectorAll(".tab-link");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+            // Deactivate all tabs
+            tabLinks.forEach((link) => link.classList.remove("active"));
+            tabContents.forEach((content) => content.classList.remove("active"));
+      
+            // Activate the clicked tab
+            const tab = event.currentTarget.dataset.tab;
+            event.currentTarget.classList.add("active");
+            document.getElementById(tab).classList.add("active");
+        });
+    });
+
+    // Ensure the dropdown is populated with preset values
+    const expenseTypes = ["Rent", "Utilities", "Groceries", "Entertainment", "Transportation", "Miscellaneous"];
+    const typeSelectionEl = document.getElementById("selectType");
+
+    expenseTypes.forEach((type) => {
+        let option = document.createElement("option");
+        option.value = type;
+        option.text = type;
+        typeSelectionEl.appendChild(option);
+    });
 
     const budgets = [];
     let currentBudget;
@@ -99,6 +128,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById(popupId).style.display = 'none';
     }
 
+
+    // push(budgetListInDB, inputTypeValue, inputTypeAmount)
+
     addNewBudgetBtnEl.addEventListener('click', () => openPopup('create-new-budget'));
 
     closeNewBudgetPopupEl.addEventListener('click', () => closePopup('create-new-budget'));
@@ -119,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="button-col-2">
                     <div class="home-salary-container">
                         <p class="home-salary-label">Salary: </p>
-                        <p class="home-salary-value">$000.00</p>
+                        <p class="home-salary-value" id="home-salary-value">$000.00</p>
                     </div>
                 </div>
                 <div class="button-col-3">
@@ -129,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="home-money-left-container">
                         <p class="home-money-left-label">Money Left: </p>
-                        <p class="home-money-left-value">$000.00</p>
+                        <p class="home-money-left-value" id="home-money-left-value">$000.00</p>
                     </div>
                 </div>
             `;
@@ -144,6 +176,8 @@ document.addEventListener('DOMContentLoaded', () => {
             budgetListEl.appendChild(budgetButton);
             closePopup('create-new-budget');
             budgetNameInputEl.value = '';
+            clearBudget();
+            
         }
     });
 
