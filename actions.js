@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.moneyRem = this.s_total - this.e_total;
             document.getElementById('money-left-amt').innerHTML = `$${this.moneyRem}`;
             document.getElementById('total-income-amt').innerHTML = `$${this.s_total}`;
+            document.getElementById('home-money-left-value').innerHTML = `$${this.moneyRem}`;
         }
 
         renderIncome() {
@@ -114,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitExpenseBtnEl = document.getElementById('submit-expense');
     const submitIncomeBtnEl = document.getElementById('submit-income');
     const budgetNameInputEl = document.getElementById('budget-name');
-    const homeBudgetSalary = document.getElementById('home-salary-value');
     const budgetListEl = document.getElementById('budget-list');
     const closeNewBudgetPopupEl = document.getElementById('close-new-budget-popup');
     const closeExpensePopupEl = document.getElementById('close-expense-popup');
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="home-money-left-container">
                         <p class="home-money-left-label">Money Left: </p>
-                        <p class="home-money-left-value">$000.00</p>
+                        <p class="home-money-left-value" id="home-money-left-value">$000.00</p>
                     </div>
                 </div>
             `;
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
             budgetListEl.appendChild(budgetButton);
             closePopup('create-new-budget');
             budgetNameInputEl.value = '';
-            homeBudgetSalary.value = newBudget.s_total;
+            clearBudget();
             
         }
     });
