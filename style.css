@@ -83,7 +83,7 @@ button {
     }
         /* Home Page Header Title */
     #home-page-header-title{
-        color: #fff
+        color: whitesmoke;
     }
     /* Header Add Budget Button */
     #add-budget-btn{
@@ -152,7 +152,7 @@ button {
 
 }
 
-.button-col-1 p {
+.home-budget-name {
     font-size: 1.3rem;
     font-weight: bolder;
     color: #35374B;
@@ -221,9 +221,23 @@ button {
 /* Budget Details Page */
     /* Budget Details Page Header */
 
+#detail-page-header {
+    justify-content: space-between;
+}
+#home-btn {}
 
 
+#budget-details-page-header-title {
+    color: whitesmoke;
+}
 
+
+#new-income-btn, #new-expense-btn {
+    color: #fff;
+    background-color: goldenrod;
+    width: auto; /* Use auto width for better button sizing */
+    margin: 0 10px; /* Consistent margin */
+}
 
 
 
