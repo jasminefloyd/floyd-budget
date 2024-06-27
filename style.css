@@ -1,349 +1,347 @@
+/* Reset and Font */
 html, body {
     margin: 0;
     padding: 0;
     font-family: "Noto Sans Display", sans-serif;
+    background-color: #f5f5f5; /* Light background for better contrast */
 }
 
-#budget-details-overview {
-    display: none;
-}
-
-
-
-.app-wrapper {
-    display: flex;  /* Enables Flexbox layout */
+/* Global Styles */
+.app-content {
+    display: flex;
     flex-direction: column;
-    top: 0;
-    left: 0;
     width: 100%;
-    background-color: whitesmoke;
-    height: 100dvh;
-    border: 5px solid black;
+    height: 100vh; /* Use vh for full viewport height */
+    background-color: #EEEDEB;
     box-sizing: border-box;
     overflow-x: hidden;
 }
 
-.app-content {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-}
-
+/* Global Header */
 .header {
-    top: 0;
     width: 100%;
-    background-color: #d3d3d3;
-    padding: 10px;
-    display: flex; /* Flexbox for layout */
-    justify-content: space-between; /* Distribute content with space between */
-    align-items: center; /* Optional: Center content vertically */
+    padding: 15px 20px; /* Increased padding for better spacing */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #35374B;
 }
 
-
-#add-budget-btn {
-    color: whitesmoke;
-    background-color: #a85aa8;
-    border: none;
-    width: 100%;
-    margin-left: 50px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: medium;
-    text-align: center;
-    padding: 10px 10px;
-}
-
-#app-info-btn {
-    border-radius: 5em;
-    margin-right: 1.5em;
-    margin-left: .5em;
-    font-size: large;
+.header-title {
+    color: #5a5a5a; /* Darker color for better readability */
+    font-size: 1.5rem; /* Larger font size */
     font-weight: bold;
 }
 
-
-
-#new-income-btn {
-    color: whitesmoke;
-    background-color: #a85aa8;
+/* Buttons */
+button {
     border: none;
-    width: 100%;
-    margin-left: 50px;
     cursor: pointer;
     border-radius: 5px;
-    font-size: medium;
-    text-align: center;
-    padding: 10px 10px;
+    font-size: 1rem;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease; /* Smooth transition for hover */
 }
 
-#new-expense-btn {
-    color: whitesmoke;
-    background-color: #a85aa8;
-    border: none;
-    width: 100%;
-    margin-right: 7%;
-    margin-left: 5px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: medium;
-    text-align: center;
-    padding: 10px 10px;
-}
-
-#home-btn {
-    background-color: #a85aa8;
-    border: none;
-    width: 45px;
-    margin-right: 7%;
-    margin-left: 5px;
-    border-radius: 5px;
-    padding: 10px 10px;
-}
-
-
-.header-title {
-    color: #a85aa8;
-    padding: 10px 10px;
-    font-size: large;
-    width: 145%;
-
-}
-
+/* Popup */
 .popup {
-    display: none;        /* Initially hide the popup */
-    position: fixed;      /* Position over the window */
+    display: none;
+    position: fixed;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%); /* Center the popup */
-    background-color: white;  
-    padding: 25px;
-    padding-right: 35px;
-    border: 2px solid black;
-    border-radius: 5px;
-    z-index: 10; /* Ensure popup is above other content */
-    width: 80%;
-    text-align: left;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 25px 35px;
+    border: 1px solid #ddd; /* Softer border color */
+    border-radius: 8px; /* Larger radius for modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    z-index: 1000; /* Ensure popup is above other content */
+    width: 85%;
+    max-width: 500px; /* Limit maximum width */
 }
 
 .close-popup {
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 10px;
-    font-size: 20px;
+    font-size: 1.5rem; /* Larger font size */
     cursor: pointer;
 }
 
-/* Top Section on Budget Details Page */
 
+
+/* ------------------------------------------------------------ */
+
+
+
+/* Home Page */
+    /* Home Page Header */
+    #home-page-header {
+        justify-content: space-between;
+
+    }
+        /* Home Page Header Title */
+    #home-page-header-title{
+        color: #fff
+    }
+    /* Header Add Budget Button */
+    #add-budget-btn{
+        color: #fff;
+        background-color: darkgoldenrod;
+        margin-left: 40px;
+    }
+    /* Header App Info Button */
+    #app-info-btn {
+        background-color: #ffffff;
+        color: #35374B;
+        border: 2px solid darkgoldenrod; /* Border to match the color */
+        border-radius: 55px; /* Circular button */
+        font-size: 1.1rem;
+        margin-right: 40px;
+    }
+    /* Home Page Popup */
+    #create-new-budget {
+        display: flex;
+        flex-direction: column;
+        width: 75%;
+    }
+
+    #create-new-budget > button {
+        margin-top: 15px;
+        width: 200px;
+        background-color: darkgoldenrod;
+        color: #fff;
+    }
+
+    #create-new-budget > input {
+        width: 350px;
+        height: 35px;
+        padding-left: 12px;
+    }
+
+    #create-new-budget > span {
+        padding-right: 10px;
+    }
+    
+
+/* Home Page Container */
+    /* Budget List Item */
+    /* Home Page Content */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.budget-button {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 1em;
+    text-align: left;
+    padding: 15px 20px; /* Increased padding for better spacing */
+    background: whitesmoke;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.button-col-1  {
+    display: flex;
+    align-items: center; /* Center align for better layout */
+    border-bottom: 1px solid lightgrey;
+
+}
+
+.button-col-1 p {
+    font-size: 1.3rem;
+    font-weight: bolder;
+    color: #35374B;
+}
+
+.button-col-2  {
+    display: flex;
+    align-items: center; /* Center align for better layout */
+    
+
+}
+
+.button-col-3 {
+    display: flex;
+    align-items: center; /* Center align for better layout */
+}
+
+.home-salary-container {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    padding: 10px 0 10px 0;
+    height: 45px;
+
+}
+
+.home-expenses-container {
+    display: flex;
+    width: 90%;
+    padding: 0 0 10px 0;
+    height: 45px;
+}
+
+.home-money-left-container {
+    display: flex;
+    width: 100%;
+    padding: 0 0 10px 0;
+    height: 45px;
+}
+
+
+.home-salary-label, .home-expenses-label, .home-money-left-label {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.home-salary-value, .home-expenses-value, .home-money-left-value {
+    margin-left: 0.5em;
+    font-size: 1.1rem;
+}
+
+.home-expenses-value {
+    color: red;
+}
+
+.home-money-left-value {
+    color: green;
+}
+
+
+
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */        
+
+
+/* Budget Details Page */
+    /* Budget Details Page Header */
+
+
+
+
+
+
+
+
+
+
+#new-income-btn, #new-expense-btn, #home-btn {
+    color: #fff;
+    background-color: #a85aa8;
+    width: auto; /* Use auto width for better button sizing */
+    margin: 0 10px; /* Consistent margin */
+}
+
+
+
+
+
+
+
+/* Top Section */
 .top-section {
     display: flex;
     justify-content: center;
-    padding: 15px;
+    padding: 20px;
+    background-color: #EEEDEB;
+    border-bottom: 1px solid #ddd;
 }
 
 .widget {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    border: 2px #c3c3c3 solid;
-    border-radius: 5px;
-    width: 85%;
-    box-shadow: 3px 3px 3px #ccc;
-    align-items: center;
-    align-content: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 800px; /* Limit maximum width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 20px;
+    background-color: whitesmoke; /* White background for widgets */
 }
 
 #widget-content-area {
     display: flex;
-    width: 80%;
+    justify-content: space-between; /* Space between for better layout */
+    width: 100%;
 }
 
-#money-left-area {
-    flex-direction: column;
-    flex: 1;
-    margin-right: auto;
+#money-left-area, #total-income-area {
     display: flex;
-    width: 49%;
+    flex-direction: column;
     align-items: center;
-    
+    width: 48%; /* Adjust width for better spacing */
 }
 
-#money-left-area > h2 {
+#money-left-area h2 {
     color: orange;
-    font-weight: 800px;
+    font-weight: bold;
 }
 
-#total-income-area {
-    flex-direction: column;
-    flex: 1;
-    margin-left: auto;
-    display: flex;
-    width: 49%;
-    align-items: center;
-
-}
-
+/* Progress Bar */
 .progress-bar {
     display: flex;
-    margin: 10px;
+    margin: 10px 0;
+    width: 100%;
+    background-color: #e0e0e0; /* Light background for the bar */
+    border-radius: 5px;
 }
 
 .bar-inside {
-    background-color: aqua;
-    color: #a85aa8;
+    background-color: #00bcd4; /* More modern color */
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    width: 70%; /* Example width */
+    text-align: center;
 }
 
-
-
-/* Middle Section on Budget Details Page */
+/* Tabs */
 .tabs {
     display: flex;
     flex-direction: column;
 }
-  
+
 .tab-list {
     display: flex;
     list-style: none;
     padding: 0;
     margin: 0;
+    border-bottom: 1px solid #ddd; /* Border for separation */
 }
-  
+
 .tab-link {
     padding: 10px 15px;
-    border: 1px solid #ccc;
-    margin-right: 5px;
+    margin: 0;
     cursor: pointer;
-    background-color: #f0f0f0; 
+    background-color: #f0f0f0;
+    border: 1px solid #ddd; /* Consistent border color */
+    border-bottom: none; /* Remove bottom border */
+    transition: background-color 0.3s ease;
 }
-  
+
 .tab-link.active {
-    background-color: #fff;
-    border-bottom: 2px solid maroon;
+    background-color: #ffffff;
+    border-bottom: 2px solid #a85aa8; /* Match primary color */
 }
-  
+
 .tab-content {
-    display: none; 
-    padding: 15px;
-    border-top: 1px solid #ccc;
+    display: none;
+    padding: 20px;
+    border-top: 1px solid #ddd;
 }
-  
+
 .tab-content.active {
-    display: block; 
-}
-
-
-/* Bottom Section on Budget Details Page */
-ul {
-    margin-top: 30px;
-    list-style: none;
-    padding-left: 0;
-}
-  
-li {
-    margin-top: 5px;
-    font-size: 18px;
-    color: darkslategray;
-    font-family:Verdana, Geneva, Tahoma, sans-serif; 
-    list-style-type: none;
+    display: block;
 }
 
 
 
-
-
-
-
-/* Home Page Content */
-
-
-.home-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.budget-button {
-    width: 95%;
-    border-radius: 1.5em;
-    margin-top: 1em;
-    text-align: left;
-    padding: 1em;
-    background: whitesmoke;
-}
-
-
-.button-col-1 > p {
-    font-size: large;
-    font-weight: bold;
-    margin: 0;
-    margin-left: .6em;
-}
-
-   
-.button-col-2 {
-    display: flex;
-    padding-top: .5em;
-    
-}
-
-
-.home-salary-container {
-    display: flex;
-    width: 100%;
-    margin: 0;
-    padding-left: 1em;  
-}
-
-.home-salary-label {
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-.home-salary-value {
-    margin-left: .5em;
-    font-size: 1.2em;
-}
-
-.button-col-3 {
-    display: flex;
-    margin: 0;
-    margin-top: -1.5em;
-}
-
-.home-expenses-container {
-    display: flex;
-    margin-left: 1em;
-}
-
-.home-expenses-label {
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-.home-expenses-value {
-    color: red;
-    margin-left: .5em;
-    font-size: 1.2em;
-}
-
-.home-money-left-container {
-    display: flex;
-    margin-left: 3.5em;
-}
-
-.home-money-left-label {
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-.home-money-left-value {
-    color: green;
-    margin-left: .5em;
-    font-size: 1.2em;
-}
-
-
-/* Footer Area */
+/* Footer */
 .fds-footer {
     display: flex;
     width: 100%;
@@ -352,12 +350,16 @@ li {
     bottom: 0;
     left: 0;
     padding: 10px;
+    background-color: #fff; /* White background for footer */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .tagline {
-    color: #c3c3c3;
+    color: #35374B;
     font-family: "Shantell Sans", cursive;
     font-weight: lighter;
-    font-size: medium;
+    font-size: 1rem;
     text-align: center;
 }
+
+

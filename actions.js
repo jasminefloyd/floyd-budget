@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="button-col-2">
                     <div class="home-salary-container">
-                        <p class="home-salary-label">Salary: </p>
+                        <p class="home-salary-label">Total Salary: </p>
                         <p class="home-salary-value" id="home-salary-value">$000.00</p>
                     </div>
                 </div>

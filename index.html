@@ -11,89 +11,92 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="app-wrapper">
-        <div class="app-content">
-            <div class="page" id="home-page">
-                <div class="header">
-                    <h1 class="header-title" id="home-page-header-title">Floyd's Budget App</h1>
-                    <button id="add-budget-btn">+ Add New</button>
-                    <button id="app-info-btn">?</button>
-                    <div id="create-new-budget" class="popup">
-                        <span class="close-popup" id="close-new-budget-popup">&times;</span>
-                        <h2>New Budget</h2> 
-                        <input type="text" id="budget-name" class="box" placeholder="Budget Name" />
-                        <button id="create-budget">Create New Budget</button>
-                    </div>
-                </div>
-                <div class="home-container" id="budget-list">
-                    <!-- Dynamic budget list items will be appended here -->
-                </div>
+    <div class="app-content">
+        <div class="home-page" id="home-page">
+            <div class="header" id="home-page-header">
+                <h1 class="header-title" id="home-page-header-title">Floyd's Budget App</h1>
+                <button id="add-budget-btn">+ Add New</button>
+                <button id="app-info-btn">?</button>
             </div>
-            <div class="page" id="budget-details-page" style="display: none;">
-                <div class="header">
-                    <button id="home-btn">🏠</button>
-                    <h1 class="header-title" id="budget-details-page-header-title">Budget Title</h1>
-                    <button id="new-income-btn">+ Income</button>
-                    <button id="new-expense-btn">+ Expense</button>
-                </div>
-                <div class="top-section">
-                    <div class="widget" id="budget-widget">
-                        <div id="widget-content-area">
-                            <div id="money-left-area">
-                                <p id="money-left-label">Money Left</p>
-                                <h2 id="money-left-amt">$0.00</h2>
-                            </div>
-                            <div id="total-income-area">
-                                <p id="total-income-label">Total Budget</p>
-                                <h2 id="total-income-amt">$0.00</h2>
-                            </div>
-                        </div>
-                        <div class="progress-bar-area" id="progress-bar-area">
-                            <progress class="progress-bar" id="progress-bar" max="100" value="0"></progress>
-                        </div>
-                    </div>
-                </div>
-                <div class="middle-section">
-                    <div class="tabs">
-                        <ul class="tab-list">
-                            <li class="tab-link active" data-tab="tab-expense">Expense</li>
-                            <li class="tab-link" data-tab="tab-income">Income</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="bottom-section">
-                    <div class="tab-content active" id="tab-expense">
-                        <div class="ledger" id="expense-ledger-list">
-                            <ul id="expense"></ul>
-                        </div>
-                    </div>
-                    <div class="tab-content" id="tab-income">
-                        <div class="ledger" id="income-ledger-list">
-                            <ul id="salary"></ul>
-                        </div>
-                    </div>
-                </div>
-                <div id="create-expense" class="popup">
-                    <span class="close-popup" id="close-expense-popup">&times;</span>
-                    <h2>New Expense</h2> 
-                    <select id="selectType" class="box">
-                        <option value="" disabled selected>Select Expense</option>
-                    </select>
-                    <input type="number" id="expense-input-amount" class="box" placeholder="$0" />
-                    <button id="submit-expense">Add Expense</button>
-                </div>
-                <div id="create-income" class="popup">
-                    <span class="close-popup" id="close-income-popup">&times;</span>
-                    <h2>New Income</h2> 
-                    <input type="text" id="income-type" class="box" placeholder="Income Name" />
-                    <input type="number" id="income-input-amount" class="box" placeholder="$0" />
-                    <button id="submit-income">Add Income</button>
-                </div>
+            <div id="create-new-budget" class="popup">
+                <span class="close-popup" id="close-new-budget-popup">&times;</span>
+                <h2>Create a New Budget</h2> 
+                <input type="text" id="budget-name" class="box" placeholder="Budget Name" />
+                <button id="create-budget">Create</button>
             </div>
-            <div class="fds-footer">
-                <p class="tagline">🏆 Greatness Magnified - An FDS Lifestyle</p>
+            
+            <div class="home-container" id="budget-list">
+                <!-- Dynamic budget list items will be appended here -->
+
             </div>
         </div>
+
+        <div class="budget-details-page" id="budget-details-page" style="display: none;">
+            <div class="header details">
+                <button id="home-btn">🏠</button>
+                <h1 class="header-title" id="budget-details-page-header-title">Budget Title</h1>
+                <button id="new-income-btn">+ Income</button>
+                <button id="new-expense-btn">+ Expense</button>
+            </div>
+            <div class="top-section">
+                <div class="widget" id="budget-widget">
+                    <div id="widget-content-area">
+                        <div id="money-left-area">
+                            <p id="money-left-label">Money Left</p>
+                            <h2 id="money-left-amt">$0.00</h2>
+                        </div>
+                        <div id="total-income-area">
+                            <p id="total-income-label">Total Budget</p>
+                            <h2 id="total-income-amt">$0.00</h2>
+                        </div>
+                    </div>
+                    <div class="progress-bar-area" id="progress-bar-area">
+                        <progress class="progress-bar" id="progress-bar" max="100" value="0"></progress>
+                    </div>
+                </div>
+            </div>
+            <div class="middle-section">
+                <div class="tabs">
+                    <ul class="tab-list">
+                        <li class="tab-link active" data-tab="tab-expense">Expense</li>
+                        <li class="tab-link" data-tab="tab-income">Income</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bottom-section">
+                <div class="tab-content active" id="tab-expense">
+                    <div class="ledger" id="expense-ledger-list">
+                        <ul id="expense"></ul>
+                    </div>
+                </div>
+                <div class="tab-content" id="tab-income">
+                    <div class="ledger" id="income-ledger-list">
+                        <ul id="salary"></ul>
+                    </div>
+                </div>
+            </div>
+            <div id="create-expense" class="popup">
+                <span class="close-popup" id="close-expense-popup">&times;</span>
+                <h2>New Expense</h2> 
+                <select id="selectType" class="box">
+                    <option value="" disabled selected>Select Expense</option>
+                </select>
+                <input type="number" id="expense-input-amount" class="box" placeholder="$0" />
+                <button id="submit-expense">Add Expense</button>
+            </div>
+            <div id="create-income" class="popup">
+                <span class="close-popup" id="close-income-popup">&times;</span>
+                <h2>New Income</h2> 
+                <input type="text" id="income-type" class="box" placeholder="Income Name" />
+                <input type="number" id="income-input-amount" class="box" placeholder="$0" />
+                <button id="submit-income">Add Income</button>
+            </div>
+        </div>
+
+        <div class="fds-footer">
+            <p class="tagline">🏆 Greatness Magnified - An FDS Lifestyle</p>
+        </div>
+
     </div>
 
 <script src="./actions.js"></script>    
