@@ -105,6 +105,7 @@ button {
         display: flex;
         flex-direction: column;
         width: 85%;
+        display: none;
     }
 
     #create-new-budget > button {
