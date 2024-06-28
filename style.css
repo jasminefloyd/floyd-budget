@@ -224,32 +224,36 @@ button {
 #detail-page-header {
     justify-content: space-between;
 }
-#home-btn {}
 
-
-#budget-details-page-header-title {
-    color: whitesmoke;
+#detail-page-header h1 {
+    color: #fff;
 }
 
 
-#new-income-btn, #new-expense-btn {
+#home-btn {
+    background-color: goldenrod;
+    margin-right: 10px;
+}
+
+
+
+#new-income-btn {
     color: #fff;
     background-color: goldenrod;
     width: auto; /* Use auto width for better button sizing */
-    margin: 0 10px; /* Consistent margin */
+    margin-left: 30px;
+
 }
 
-
-
-
-
-
-#new-income-btn, #new-expense-btn, #home-btn {
+#new-expense-btn {
     color: #fff;
-    background-color: #a85aa8;
+    background-color: goldenrod;
     width: auto; /* Use auto width for better button sizing */
-    margin: 0 10px; /* Consistent margin */
+    margin-right: 35px;
+    
 }
+
+
 
 
 
@@ -329,13 +333,16 @@ button {
 }
 
 .tab-link {
-    padding: 10px 15px;
+    padding: 10px 20px;
     margin: 0;
     cursor: pointer;
     background-color: #f0f0f0;
     border: 1px solid #ddd; /* Consistent border color */
     border-bottom: none; /* Remove bottom border */
     transition: background-color 0.3s ease;
+    width: 150px;
+    color: #35374B;
+    font-weight: bold;
 }
 
 .tab-link.active {
