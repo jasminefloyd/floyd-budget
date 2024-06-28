@@ -89,7 +89,7 @@ button {
     #add-budget-btn{
         color: #fff;
         background-color: darkgoldenrod;
-        margin-left: 40px;
+        margin-left: 30px;
     }
     /* Header App Info Button */
     #app-info-btn {
@@ -98,13 +98,13 @@ button {
         border: 2px solid darkgoldenrod; /* Border to match the color */
         border-radius: 55px; /* Circular button */
         font-size: 1.1rem;
-        margin-right: 40px;
+        margin-right: 35px;
     }
     /* Home Page Popup */
     #create-new-budget {
         display: flex;
         flex-direction: column;
-        width: 75%;
+        width: 85%;
     }
 
     #create-new-budget > button {
