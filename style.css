@@ -241,7 +241,7 @@ button {
     color: #fff;
     background-color: goldenrod;
     width: auto; /* Use auto width for better button sizing */
-    margin-left: 30px;
+    margin-left: 15px;
 
 }
 
@@ -249,7 +249,7 @@ button {
     color: #fff;
     background-color: goldenrod;
     width: auto; /* Use auto width for better button sizing */
-    margin-right: 35px;
+    margin-right: 25px;
     
 }
 
