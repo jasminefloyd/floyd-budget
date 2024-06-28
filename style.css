@@ -225,14 +225,19 @@ button {
     justify-content: space-between;
 }
 
-#detail-page-header h1 {
+#budget-details-page-header-title {
     color: #fff;
+    font-weight: 500;
+    font-size: x-large;
+    width: 200px;
+    margin-right: 35px;
 }
 
 
 #home-btn {
     background-color: goldenrod;
     margin-right: 10px;
+    margin-left: -5px;
 }
 
 
@@ -240,16 +245,18 @@ button {
 #new-income-btn {
     color: #fff;
     background-color: goldenrod;
-    width: auto; /* Use auto width for better button sizing */
-    margin-left: 15px;
+    width: 120px;
+    margin-left: -55px;
+    
 
 }
 
 #new-expense-btn {
     color: #fff;
     background-color: goldenrod;
-    width: auto; /* Use auto width for better button sizing */
-    margin-right: 25px;
+    width: 120px; /* Use auto width for better button sizing */
+    margin-right: 30px;
+    margin-left: 10px;
     
 }
 
