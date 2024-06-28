@@ -220,7 +220,78 @@ button {
 
 
 /* Budget Details Page */
-    /* Budget Details Page Header */
+/* Budget Details Page Header */
+
+/* Budget Details Page Create Expense Popup */
+#create-expense {
+    display: flex;
+    width: 85%;
+    display: none;
+
+}
+
+#create-expense > button {
+    margin-top: 15px;
+    width: 200px;
+    background-color: darkgoldenrod;
+    color: #fff;
+}
+
+#create-expense > input {
+    width: 200px;
+    height: 35px;
+    padding-left: 12px;
+    margin-top: 10px;
+}
+
+#create-expense > select {
+    width: 150px;
+    height: 38px;
+    padding-left: 12px;
+    
+}
+
+#create-expense > span {
+    padding-right: 10px;
+}
+
+
+/* Budget Details Page Create Income Popup */
+#create-income {
+    display: flex;
+    width: 85%;
+    display: none;
+
+}
+
+#create-income > button {
+    margin-top: 15px;
+    width: 200px;
+    background-color: darkgoldenrod;
+    color: #fff;
+}
+
+#income-type {
+    width: 200px;
+    height: 35px;
+    padding-left: 12px;
+    margin-top: 10px;
+}
+
+#income-input-amount {
+    width: 100px;
+    height: 35px;
+    padding-left: 12px;
+    margin-top: 10px;
+}
+
+#create-income > span {
+    padding-right: 10px;
+}
+
+
+
+/* Budget Details Page Header */
 
 #detail-page-header {
     justify-content: space-between;
@@ -237,7 +308,7 @@ button {
 
 #home-btn {
     background-color: goldenrod;
-    margin-right: 10px;
+    margin-right: 12px;
     margin-left: -5px;
 }
 
@@ -260,13 +331,6 @@ button {
     margin-left: 10px;
     
 }
-
-
-
-
-
-
-
 
 
 /* Top Section */
@@ -349,13 +413,14 @@ button {
     border-bottom: none; /* Remove bottom border */
     transition: background-color 0.3s ease;
     width: 150px;
+    height: 25px;
     color: #35374B;
     font-weight: bold;
 }
 
 .tab-link.active {
     background-color: #ffffff;
-    border-bottom: 2px solid #a85aa8; /* Match primary color */
+    border-bottom: 2px solid goldenrod; /* Match primary color */
 }
 
 .tab-content {

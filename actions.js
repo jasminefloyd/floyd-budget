@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
             budgetButton.className = 'budget-button';
             budgetButton.innerHTML = `
                 <div class="button-col-1">
-                    <p class="home-budget-name" id="budget-details-page-header-title">${budgetName}</p>
+                    <p class="home-budget-name">${budgetName}</p>
                 </div>
                 <div class="button-col-2">
                     <div class="home-salary-container">
